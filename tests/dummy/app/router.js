@@ -5,16 +5,6 @@ const { on } = Ember;
 
 var Router = Ember.Router.extend({
   location: config.locationType
-  // transitionTo() {
-  // 	const tsNow = window.performance.now();
-  // 	console.log('transition started', tsNow);
-  // 	const transitionPromise = this._super(...arguments);
-  // 	transitionPromise.then(() => {
-  // 		const tsDone = window.performance.now();
-  // 		console.log('transition ended', tsDone, `${(tsDone - tsNow)/1000}s`);
-  // 	})
-  // 	return transitionPromise;
-  // }
 });
 
 Router.map(function() {
