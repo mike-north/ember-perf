@@ -41,7 +41,8 @@ export default Base.extend(Evented, {
 
   currentLoadingRoute() {
     assert('Expected non-empty transitionData', this.transitionData);
-    return this.transitionData.routes.filter(routeName => routeName !== 'loading')[0];
+    let meaningfulRoutes = this.transitionData.routes.filter(routeName => routeName !== 'loading');
+    return meaningfulRoutes[meaningfulRoutes.length - 1];
   },
 
   renderBefore(name, timestamp, payload) {
@@ -51,8 +52,7 @@ export default Base.extend(Evented, {
     }
     route.views.addObject({
       object: payload.object,
-      containerKey: payload.containerKey,
-      _debugContainerKey: payload._debugContainerKey,
+      name: payload.view.renderedName,
       startTime: timestamp
     });
   },
