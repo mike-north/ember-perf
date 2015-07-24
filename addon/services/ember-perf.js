@@ -16,26 +16,51 @@ export default Base.extend(Evented, {
         endTime: tEnd,
         elapsedTime: tEnd - this.transitionData.startTime
       });
-      this.transitionData = null;
+      // this.transitionData = null;
       this.trigger('transitionComplete', event);
     });
   },
 
   routeActivated(route) {
     assert('Expected non-empty transitionData', this.transitionData);
-    if (!this.transitionData.loadedRoutes) {
-      this.transitionData.loadedRoutes = Ember.A();
+    if (!this.transitionData.routes) {
+      this.transitionData.routes = Ember.A();
     }
-    this.transitionData.loadedRoutes.addObject(route.routeName);
+    this.transitionData.routes.addObject({name: route.routeName});
     console.log(`activate - ${route.get('routeName')}`);
   },
   routeDeactivated(route) {
     assert('Expected non-empty transitionData', this.transitionData);
-    if (!this.transitionData.loadedRoutes) {
-      this.transitionData.loadedRoutes = Ember.A();
+    if (!this.transitionData.routes) {
+      this.transitionData.routes = Ember.A();
     }
-    this.transitionData.loadedRoutes.removeObject(route.routeName);
+    const routeObj = this.transitionData.routes.findBy('name', route.routeName);
+    this.transitionData.routes.removeObject(routeObj);
     console.log(`deactivate - ${route.get('routeName')}`);
+  },
+
+  currentLoadingRoute() {
+    assert('Expected non-empty transitionData', this.transitionData);
+    return this.transitionData.routes.filter(routeName => routeName !== 'loading')[0];
+  },
+
+  renderBefore(name, timestamp, payload) {
+    const route = this.currentLoadingRoute();
+    if (!route.views) {
+      route.views = Ember.A();
+    }
+    route.views.addObject({
+      object: payload.object,
+      containerKey: payload.containerKey,
+      _debugContainerKey: payload._debugContainerKey,
+      startTime: timestamp
+    });
+  },
+  renderAfter(name, timestamp, payload) {
+    const route = this.currentLoadingRoute();
+    const viewObject = route.views.findBy('object', payload.object);
+    viewObject.endTime = timestamp;
+    viewObject.renderTime = viewObject.endTime - viewObject.startTime;
   },
   transitionLogger: on('transitionComplete', data => {
     console.log('DATA', data);

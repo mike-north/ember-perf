@@ -29,14 +29,11 @@ function installInstrumentationHooks() {
     deactivate() {
       this.get('perfService').routeDeactivated(this);
       this._super(...arguments);
-    // },
-    // beforeModel() {
-    //   console.log(`beforeModel - ${this.get('routeName')}`);
-    //   this._super(...arguments);
-    // },
-    // afterModel() {
-    //   console.log(`afterModel - ${this.get('routeName')}`);
-    //   this._super(...arguments);
+    },
+    render() {
+
+
+      return this._super(...arguments);
     }
   });
 
@@ -77,6 +74,23 @@ export function initialize(container, application) {
   } = config;
   injectServiceOntoFactories(emberPerf, container, application);
   installInstrumentationHooks();
+
+  let _perfService = null
+  function perfService() {
+    if (!_perfService) {
+      _perfService = container.lookup('service:ember-perf');
+    }
+    return _perfService;
+  }
+
+  Ember.subscribe("render", {
+    before: function(name, timestamp, payload) {
+      perfService().renderBefore(name, timestamp, payload);
+    },
+    after: function(name, timestamp, payload) {
+      perfService().renderAfter(name, timestamp, payload);
+    }
+  });
 
 };
 
