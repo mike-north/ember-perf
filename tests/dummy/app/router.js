@@ -17,6 +17,18 @@ var Router = Ember.Router.extend({
   }
 });
 
+Router.reopen({
+  _doURLTransition() {
+    debugger;
+    return this._super(...arguments);
+  },
+
+  _doTransition() {
+    debugger;
+    return this._super(...arguments);
+  }
+});
+
 Router.map(function() {
 	this.route('companies');
 	this.route('company', {path: 'company/:id'}, function () {
