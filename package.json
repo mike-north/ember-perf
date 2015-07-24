@@ -1,7 +1,7 @@
 {
   "name": "ember-perf",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Performance instrumentation for ember.js apps",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -15,12 +15,14 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Mike North <michael.l.north@gmail.com> (http://mike.works)",
+  "repository": "https://github.com/truenorth/ember-perf.git",
+  "homepage": "https://github.com/truenorth/ember-perf",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
-    "ember-cli": "1.13.0",
-    "ember-cli-app-version": "0.4.0",
+    "ember-cli": "1.13.1",
+    "ember-cli-app-version": "0.3.5",
     "ember-cli-content-security-policy": "0.4.0",
     "ember-cli-dependency-checker": "^1.0.0",
     "ember-cli-htmlbars": "0.7.9",
@@ -34,7 +36,7 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
     "ember-disable-prototype-extensions": "^1.0.0",
-    "ember-try": "0.0.6"
+    "ember-try": "0.0.8"
   },
   "keywords": [
     "ember-addon"

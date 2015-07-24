@@ -1,6 +1,6 @@
-# Ember-perf
+# ember-perf
 
-This README outlines the details of collaborating on this Ember addon.
+Performance instrumentation for ember.js apps
 
 ## Installation
 
