@@ -4,11 +4,13 @@ module.exports = {
       name: 'ember-1.7',
       dependencies: {
         ember: '~1.7.0',
-        handlebars: '~1.3.0'
+        handlebars: '~1.3.0',
+        'ember-data': '1.0.0-beta.11'
       },
       resolutions: {
         ember: '~1.7.0',
-        handlebars: '~1.3.0'
+        handlebars: '~1.3.0',
+        'ember-data': '1.0.0-beta.11'
       }
     },
     {
