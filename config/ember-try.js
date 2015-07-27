@@ -1,6 +1,28 @@
 module.exports = {
   scenarios: [
     {
+      name: 'ember-1.6',
+      dependencies: {
+        ember: '~1.6.0',
+        handlebars: '~1.3.0'
+      },
+      resolutions: {
+        ember: '~1.6.0',
+        handlebars: '~1.3.0'
+      }
+    },
+    {
+      name: 'ember-1.7',
+      dependencies: {
+        ember: '~1.7.0',
+        handlebars: '~1.3.0'
+      },
+      resolutions: {
+        ember: '~1.7.0',
+        handlebars: '~1.3.0'
+      }
+    },
+    {
       name: 'ember-1.8',
       dependencies: {
         ember: '~1.8.1',
