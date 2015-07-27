@@ -13,6 +13,7 @@ env:
   - EMBER_TRY_SCENARIO=ember-1.7
   - EMBER_TRY_SCENARIO=ember-1.8
   - EMBER_TRY_SCENARIO=ember-1.9
+  - EMBER_TRY_SCENARIO=ember-1.10
   # - EMBER_TRY_SCENARIO=ember-release
   # - EMBER_TRY_SCENARIO=ember-beta
   # - EMBER_TRY_SCENARIO=ember-canary
@@ -32,6 +33,7 @@ before_install:
   - "npm install -g npm@^2"
 
 install:
+  - node lib/setup-packagejson.js
   - npm install -g bower
   - npm install
   - bower install
