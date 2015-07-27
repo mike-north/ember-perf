@@ -4,9 +4,9 @@ import { COMPANIES } from '../utils/sample-data';
 import BaseRoute from './base';
 
 export default BaseRoute.extend({
-	model() {
-		return randomWait(3000,300).then(() => {
-			return Ember.A(COMPANIES);
-		});
-	}
+  model() {
+    return randomWait(3000, 300).then(() => {
+      return Ember.A(COMPANIES);
+    });
+  }
 });

@@ -1,8 +1,8 @@
-import Ember from 'ember';
+// import Ember from 'ember';
 import BaseRoute from './base';
 
 export default BaseRoute.extend({
-	redirect() {
-		this.transitionTo('companies');
-	}
+  redirect() {
+    this.transitionTo('companies');
+  }
 });

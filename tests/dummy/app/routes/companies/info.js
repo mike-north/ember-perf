@@ -1,6 +1,4 @@
-import Ember from 'ember';
+// import Ember from 'ember';
 import BaseRoute from '../base';
 
-export default BaseRoute.extend({
-	
-});
+export default BaseRoute.extend({ });

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 const { on, Evented, assert } = Ember;
-const Base = Ember.Service || Ember.Object
+const Base = Ember.Service || Ember.Object;
 
 export default Base.extend(Evented, {
   transitionData: null,
@@ -26,7 +26,7 @@ export default Base.extend(Evented, {
     if (!this.transitionData.routes) {
       this.transitionData.routes = Ember.A();
     }
-    this.transitionData.routes.addObject({name: route.routeName});
+    this.transitionData.routes.addObject({ name: route.routeName });
     console.log(`activate - ${route.get('routeName')}`);
   },
   routeDeactivated(route) {

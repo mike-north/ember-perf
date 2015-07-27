@@ -2,10 +2,10 @@ import Ember from 'ember';
 import { initialize } from '../../../initializers/ember-perf';
 import { module, test } from 'qunit';
 
-var registry, application;
+let registry, application;
 
 module('Unit | Initializer | ember perf', {
-  beforeEach: function() {
+  beforeEach() {
     Ember.run(function() {
       application = Ember.Application.create();
       registry = application.registry;
@@ -15,7 +15,7 @@ module('Unit | Initializer | ember perf', {
 });
 
 // Replace this with your real tests.
-test('it works', function(assert) {
+test('it works', assert => {
   initialize(registry, application);
 
   // you would normally confirm the results of the initializer here
