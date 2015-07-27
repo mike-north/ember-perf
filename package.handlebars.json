@@ -1,6 +1,6 @@
 {
   "name": "ember-perf",
-  "version": "0.0.2-handlebars",
+  "version": "0.0.3-handlebars",
   "description": "Performance instrumentation for ember.js apps",
   "directories": {
     "doc": "doc",

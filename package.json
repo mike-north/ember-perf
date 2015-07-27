@@ -1,6 +1,6 @@
 {
   "name": "ember-perf",
-  "version": "0.0.2-handlebars",
+  "version": "0.0.3",
   "description": "Performance instrumentation for ember.js apps",
   "directories": {
     "doc": "doc",
@@ -20,7 +20,7 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
-    "broccoli-ember-hbs-template-compiler": "1.6.2",
+    "ember-cli-htmlbars": "0.7.9",
     "ember-cli": "1.13.1",
     "ember-cli-app-version": "0.3.5",
     "ember-cli-content-security-policy": "0.4.0",
@@ -31,7 +31,7 @@
     "ember-cli-qunit": "0.3.15",
     "ember-cli-release": "0.2.3",
     "ember-cli-uglify": "^1.0.1",
-    "ember-data": "1.0.0-beta.11",
+    "ember-data": "1.0.0-beta.16.1",
     "ember-disable-prototype-extensions": "^1.0.0",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
@@ -42,7 +42,7 @@
     "ember-addon"
   ],
   "dependencies": {
-    "ember-cli-babel": "^4.1.0"
+    "ember-cli-babel": "^5.0.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
