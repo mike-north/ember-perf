@@ -1,5 +1,9 @@
 # ember-perf
 
+[![Build Status](https://travis-ci.org/truenorth/ember-perf.svg?branch=master)](https://travis-ci.org/truenorth/ember-perf)
+[![Dependency Status](https://david-dm.org/truenorth/ember-perf.svg)](https://david-dm.org/truenorth/ember-perf)
+[![devDependency Status](https://david-dm.org/truenorth/ember-perf/dev-status.svg)](https://david-dm.org/truenorth/ember-perf#info=devDependencies)
+
 Performance instrumentation for ember.js apps
 
 ## Installation
