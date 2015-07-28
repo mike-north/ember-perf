@@ -10,16 +10,16 @@ cache:
     - node_modules
 
 env:
-  - EMBER_TRY_SCENARIO=ember-1.6
-  - EMBER_TRY_SCENARIO=ember-1.7
-  - EMBER_TRY_SCENARIO=ember-1.8
-  - EMBER_TRY_SCENARIO=ember-1.9
-  - EMBER_TRY_SCENARIO=ember-1.10
-  - EMBER_TRY_SCENARIO=ember-1.11
-  - EMBER_TRY_SCENARIO=ember-1.12
+  # - EMBER_TRY_SCENARIO=ember-1.6
+  # - EMBER_TRY_SCENARIO=ember-1.7
+  # - EMBER_TRY_SCENARIO=ember-1.8
+  # - EMBER_TRY_SCENARIO=ember-1.9
+  # - EMBER_TRY_SCENARIO=ember-1.10
+  # - EMBER_TRY_SCENARIO=ember-1.11
+  # - EMBER_TRY_SCENARIO=ember-1.12
   - EMBER_TRY_SCENARIO=ember-release
-  - EMBER_TRY_SCENARIO=ember-beta
-  - EMBER_TRY_SCENARIO=ember-canary
+  # - EMBER_TRY_SCENARIO=ember-beta
+  # - EMBER_TRY_SCENARIO=ember-canary
 
 matrix:
   fast_finish: true
