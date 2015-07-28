@@ -1,13 +1,16 @@
 module.exports = {
   scenarios: [
     {
-      name: 'ember-1.7',
+      name: 'ember-1.6',
       dependencies: {
-        ember: '~1.7.0',
+        ember: '~1.6.0',
         handlebars: '~1.3.0',
         'ember-data': '1.0.0-beta.11'
-      },
-      resolutions: {
+      }
+    },
+    {
+      name: 'ember-1.7',
+      dependencies: {
         ember: '~1.7.0',
         handlebars: '~1.3.0',
         'ember-data': '1.0.0-beta.11'
@@ -18,19 +21,11 @@ module.exports = {
       dependencies: {
         ember: '~1.8.1',
         handlebars: '~1.3.0'
-      },
-      resolutions: {
-        ember: '~1.8.1',
-        handlebars: '~1.3.0'
       }
     },
     {
       name: 'ember-1.9',
       dependencies: {
-        ember: '~1.9.1',
-        handlebars: '~2.0.0'
-      },
-      resolutions: {
         ember: '~1.9.1',
         handlebars: '~2.0.0'
       }
