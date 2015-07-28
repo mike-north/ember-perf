@@ -50,15 +50,22 @@ export default Base.extend(Evented, {
     if (!route.views) {
       route.views = Ember.A();
     }
+    if (!payload.view) {
+      return;
+    }
     route.views.addObject({
       object: payload.object,
-      name: payload.view.renderedName,
+      viewId: payload.view.elementId,
+      containerKey: payload.view._debugContainerKey,
       startTime: timestamp
     });
   },
   renderAfter(name, timestamp, payload) {
     const route = this.currentLoadingRoute();
     const viewObject = route.views.findBy('object', payload.object);
+    if (!viewObject) {
+      return;
+    }
     viewObject.endTime = timestamp;
     viewObject.renderTime = viewObject.endTime - viewObject.startTime;
   },

@@ -5,7 +5,7 @@ import BaseRoute from './base';
 
 export default BaseRoute.extend({
   model() {
-    return randomWait(3000, 300).then(() => {
+    return randomWait(Ember.testing ? 10 : 3000, Ember.testing ? 10 : 300).then(() => {
       return Ember.A(COMPANIES);
     });
   }

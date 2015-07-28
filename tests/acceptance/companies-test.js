@@ -25,7 +25,7 @@ test('visiting /companies', function(assert) {
 
   click('.companies-list .company:first-child a');
 
-  andThen(function () {
-    assert.equal(currentURL(), '/companies/1/buildings');
+  andThen(function() {
+    assert.equal(currentURL(), '/company/1/buildings');
   });
 });
