@@ -1,4 +1,6 @@
 import EmberPerfService from 'ember-perf/services/ember-perf';
+import { upgradeRoute } from 'ember-perf/ext/route';
+import { upgradeRouter } from 'ember-perf/ext/router';
 import config from '../config/environment';
 
 const {
@@ -20,52 +22,8 @@ function injectServiceOntoFactories(emberPerf, container, application) {
 }
 
 function installInstrumentationHooks() {
-
-  Route.reopen({
-    activate() {
-      this.get('perfService').routeActivated(this);
-      this._super(...arguments);
-    },
-    deactivate() {
-      this.get('perfService').routeDeactivated(this);
-      this._super(...arguments);
-    },
-    render() {
-
-
-      return this._super(...arguments);
-    }
-  });
-
-
-  Router.reopen({
-    perfService: computed(function() {
-      return this.container.lookup('service:ember-perf');
-    }),
-    _doURLTransition() {
-      const transitionPromise = this._super(...arguments);
-      this.trigger('willTransition', {
-        promise: transitionPromise
-      });
-      return transitionPromise;
-    },
-    _doTransition() {
-      const transitionPromise = this._super(...arguments);
-      this.trigger('willTransition', {
-        promise: transitionPromise
-      });
-      return transitionPromise;
-    },
-
-    _beginPerfDataCollection(transitionInfo) {
-      this.get('perfService').measureTransition(transitionInfo);
-    },
-
-    _transitionStartListener: on('willTransition', function(transitionInfo) {
-      this._beginPerfDataCollection(transitionInfo);
-    })
-  });
-
+  upgradeRoute(Route);
+  upgradeRouter(Router);
 }
 
 export function initialize(container, application) {

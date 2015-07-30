@@ -4,6 +4,7 @@
 [![Dependency Status](https://david-dm.org/truenorth/ember-perf.svg)](https://david-dm.org/truenorth/ember-perf)
 [![devDependency Status](https://david-dm.org/truenorth/ember-perf/dev-status.svg)](https://david-dm.org/truenorth/ember-perf#info=devDependencies)
 [![Code Climate](https://codeclimate.com/github/truenorth/ember-perf/badges/gpa.svg)](https://codeclimate.com/github/truenorth/ember-perf)
+[![Ember Observer Score](http://emberobserver.com/badges/ember-perf.svg)](http://emberobserver.com/addons/ember-perf)
 
 Package | Ember Versions | Version
 --------|----------------|--------
