@@ -1,9 +1,9 @@
 # ember-perf
 
-[![Build Status](https://travis-ci.org/truenorth/ember-perf.svg?branch=master)](https://travis-ci.org/truenorth/ember-perf)
-[![Dependency Status](https://david-dm.org/truenorth/ember-perf.svg)](https://david-dm.org/truenorth/ember-perf)
-[![devDependency Status](https://david-dm.org/truenorth/ember-perf/dev-status.svg)](https://david-dm.org/truenorth/ember-perf#info=devDependencies)
-[![Code Climate](https://codeclimate.com/github/truenorth/ember-perf/badges/gpa.svg)](https://codeclimate.com/github/truenorth/ember-perf)
+[![Build Status](https://travis-ci.org/mike-north/ember-perf.svg?branch=master)](https://travis-ci.org/mike-north/ember-perf)
+[![Dependency Status](https://david-dm.org/mike-north/ember-perf.svg)](https://david-dm.org/mike-north/ember-perf)
+[![devDependency Status](https://david-dm.org/mike-north/ember-perf/dev-status.svg)](https://david-dm.org/mike-north/ember-perf#info=devDependencies)
+[![Code Climate](https://codeclimate.com/github/mike-north/ember-perf/badges/gpa.svg)](https://codeclimate.com/github/mike-north/ember-perf)
 
 Package | Ember Versions | Version
 --------|----------------|--------
