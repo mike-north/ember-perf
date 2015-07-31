@@ -1,6 +1,6 @@
 {
   "name": "ember-perf",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Performance instrumentation for ember.js apps",
   "directories": {
     "doc": "doc",
@@ -11,12 +11,12 @@
     "build": "ember build",
     "test": "ember try:testall"
   },
-  "repository": "https://github.com/truenorth/ember-perf.git",
+  "repository": "https://github.com/mike-north/ember-perf.git",
   "engines": {
     "node": ">= 0.10.0"
   },
   "author": "Mike North <michael.l.north@gmail.com> (http://mike.works)",
-  "homepage": "https://github.com/truenorth/ember-perf",
+  "homepage": "https://github.com/mike-north/ember-perf",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
