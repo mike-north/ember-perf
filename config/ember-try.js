@@ -76,10 +76,23 @@ module.exports = {
       }
     },
     {
+      name: 'ember-1.13',
+      dependencies: {
+        ember: '~1.13.0',
+        'ember-data': '~1.13.0',
+        handlebars: null
+      },
+      resolutions: {
+        ember: '~1.13.0',
+        'ember-data': '~1.13.0',
+        handlebars: null
+      }
+    },
+    {
       name: 'ember-release',
       dependencies: {
         'ember': 'components/ember#release',
-        'ember-data': '1.13.7'
+        'ember-data': '1.13.8'
       },
       resolutions: {
         'ember': 'release'
@@ -89,7 +102,7 @@ module.exports = {
       name: 'ember-beta',
       dependencies: {
         'ember': 'components/ember#beta',
-        'ember-data': '1.13.7'
+        'ember-data': '1.13.8'
       },
       resolutions: {
         'ember': 'beta'
