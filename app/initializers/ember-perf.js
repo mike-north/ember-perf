@@ -1,8 +1,10 @@
 import EmberPerfService from 'ember-perf/services/ember-perf';
+import RouterExt from 'ember-perf/ext/router';
+import RouteExt from 'ember-perf/ext/route';
 import config from '../config/environment';
 
 const {
-  computed, on, Router, Route
+  Router, Route
 } = Ember;
 
 function injectServiceOntoFactories(emberPerf, container, application) {
@@ -19,61 +21,15 @@ function injectServiceOntoFactories(emberPerf, container, application) {
   });
 }
 
-function installInstrumentationHooks() {
-
-  Route.reopen({
-    activate() {
-      this.get('perfService').routeActivated(this);
-      this._super(...arguments);
-    },
-    deactivate() {
-      this.get('perfService').routeDeactivated(this);
-      this._super(...arguments);
-    },
-    render() {
-
-
-      return this._super(...arguments);
-    }
-  });
-
-
-  Router.reopen({
-    perfService: computed(function() {
-      return this.container.lookup('service:ember-perf');
-    }),
-    _doURLTransition() {
-      const transitionPromise = this._super(...arguments);
-      this.trigger('willTransition', {
-        promise: transitionPromise
-      });
-      return transitionPromise;
-    },
-    _doTransition() {
-      const transitionPromise = this._super(...arguments);
-      this.trigger('willTransition', {
-        promise: transitionPromise
-      });
-      return transitionPromise;
-    },
-
-    _beginPerfDataCollection(transitionInfo) {
-      this.get('perfService').measureTransition(transitionInfo);
-    },
-
-    _transitionStartListener: on('willTransition', function(transitionInfo) {
-      this._beginPerfDataCollection(transitionInfo);
-    })
-  });
-
-}
-
 export function initialize(container, application) {
   const {
     emberPerf
   } = config;
+  
   injectServiceOntoFactories(emberPerf, container, application);
-  installInstrumentationHooks();
+
+  Route.reopen(RouteExt);
+  Router.reopen(RouterExt);
 
   let _perfService = null
   function perfService() {
@@ -84,10 +40,10 @@ export function initialize(container, application) {
   }
 
   Ember.subscribe("render", {
-    before: function(name, timestamp, payload) {
+    before(name, timestamp, payload) {
       perfService().renderBefore(name, timestamp, payload);
     },
-    after: function(name, timestamp, payload) {
+    after(name, timestamp, payload) {
       perfService().renderAfter(name, timestamp, payload);
     }
   });
