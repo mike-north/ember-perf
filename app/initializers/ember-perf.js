@@ -16,6 +16,8 @@ function injectServiceOntoFactories(emberPerf, container, application) {
     instantiate: false
   });
   application.register('service:ember-perf', EmberPerfService);
+  application.inject('service:ember-perf', 'defaults', 'config:ember-perf');
+
   injectionFactories.forEach(factory => {
     application.inject(factory, 'perfService', 'service:ember-perf');
   });

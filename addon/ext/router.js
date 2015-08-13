@@ -21,7 +21,7 @@ export default Mixin.create({
   },
 
   _beginPerfDataCollection(transitionInfo) {
-    this.get('perfService').measureTransition(transitionInfo);
+    this.get('perfService')._measureTransition(transitionInfo);
   },
 
   _transitionStartListener: on('willTransition', function(transitionInfo) {
