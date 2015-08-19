@@ -10,19 +10,21 @@ cache:
     - node_modules
 
 env:
+  - EMBER_TRY_SCENARIO=ember-1.6
+  - EMBER_TRY_SCENARIO=ember-1.7
   - EMBER_TRY_SCENARIO=ember-1.8
   - EMBER_TRY_SCENARIO=ember-1.10
   - EMBER_TRY_SCENARIO=ember-1.11
   - EMBER_TRY_SCENARIO=ember-1.12
+  - EMBER_TRY_SCENARIO=ember-1.13
   - EMBER_TRY_SCENARIO=ember-release
-  - EMBER_TRY_SCENARIO=ember-beta
-  - EMBER_TRY_SCENARIO=ember-canary
+  - ALLOW_DEPRECATIONS=true EMBER_TRY_SCENARIO=ember-beta
+  - ALLOW_DEPRECATIONS=true EMBER_TRY_SCENARIO=ember-canary
 
 matrix:
   fast_finish: true
   allow_failures:
-    - env: EMBER_TRY_SCENARIO=ember-beta
-    - env: EMBER_TRY_SCENARIO=ember-canary
+    - env: ALLOW_DEPRECATIONS=true EMBER_TRY_SCENARIO=ember-canary
 
 before_install:
   - mkdir travis-phantomjs

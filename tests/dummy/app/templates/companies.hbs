@@ -1,7 +1,3 @@
-<ul class='companies-list'>
-{{#each company in content}}
-  <li class='company'>{{link-to company.name 'company' company}}</li>
-{{/each}}
-</ul>
+{{view 'items-list' class='companies-list' content=content itemClass='company' itemRoute='company'}}
 
 {{outlet}}

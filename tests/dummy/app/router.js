@@ -27,13 +27,17 @@ const Router = Ember.Router.extend({
   location: config.locationType
 });
 
+function rn(parent, name) {
+  return IS_PRE_17 ? `${parent}.${name}` : name;
+}
+
 Router.map(function() {
   this[NESTED_ROUTE_FN]('companies', function() {
     this.route('info');
   });
   this[NESTED_ROUTE_FN]('company', { path: 'company/:id' }, function() {
-    this[NESTED_ROUTE_FN]('buildings');
-    this[NESTED_ROUTE_FN]('building', { path: 'building/:id' }, function() {
+    this[NESTED_ROUTE_FN](rn('company', 'buildings'), { path: 'buildings' });
+    this[NESTED_ROUTE_FN](rn('company', 'building'), { path: 'building/:id' }, function() {
       this.route('floors');
       this.route('floor', { path: 'floor/:id' });
     });
