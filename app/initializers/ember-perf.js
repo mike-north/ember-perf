@@ -33,20 +33,12 @@ export function initialize(container, application) {
   Route.reopen(RouteExt);
   Router.reopen(RouterExt);
 
-  let _perfService = null
-  function perfService() {
-    if (!_perfService) {
-      _perfService = container.lookup('service:ember-perf');
-    }
-    return _perfService;
-  }
-
   Ember.subscribe("render", {
     before(name, timestamp, payload) {
-      perfService().renderBefore(name, timestamp, payload);
+      container.lookup('service:ember-perf').renderBefore(name, timestamp, payload);
     },
     after(name, timestamp, payload) {
-      perfService().renderAfter(name, timestamp, payload);
+      container.lookup('service:ember-perf').renderAfter(name, timestamp, payload);
     }
   });
 

@@ -1,6 +1,10 @@
-function TransitionData() {
+function TransitionData(args) {
+  this.destURL = args.destURL;
+  this.destRoute = args.destRoute;
   this.startTime = new Date().valueOf();
   this.endTime = null;
+  this._routes = [];
+  this._views = [];
 }
 
 function t() {
@@ -8,21 +12,30 @@ function t() {
 }
 
 TransitionData.prototype = {
-  _routes: [],
-  _views: [],
+
   finish() {
     this.endTime = t();
+    this.elapsedTime = this.endTime - this.startTime;
   },
 
-  activateRoute(name) {
-    const activationTime = t();
+  activateRoute(route) {
+    const startTime = t();
     const r = {
-      name,
-      activationTime,
+      name: route.routeName,
+      debugContainerKey: route._debugContainerKey,
+      startTime,
       views: []
     };
     this._routes.push(r);
     this._lastActivatedRoute = r;
+  },
+
+  deactivateRoute(/*route*/) {
+    // const endTime = t();
+    // const [r] = this._routes.filter(_r =>  _r.name === route.routeName);
+    // debugger;
+    // r.endTime = endTime;
+    // r.elapsedTime = r.endTime - r.startTime;
   },
 
   willRender(name, timestamp, payload) {
@@ -30,7 +43,6 @@ TransitionData.prototype = {
       case 'render.component':
       case 'render.view':
         const id = payload.view.elementId;
-        console.log(`willRender - ${id}`);
         const startTime = t();
         const v = {
           startTime,
@@ -38,14 +50,13 @@ TransitionData.prototype = {
           containerKey: payload.view._debugContainerKey
         };
         let activeRoute = this._lastActivatedRoute;
+        const viewIdx = this._views.length;
         this._views.push(v);
+
         if (payload.view.parentView) {
           v.parentViewId = payload.view.parentView.elementId;
         }
-        activeRoute.views.push(v.id);
-
-        // this._lastActivatedRoute.views.push(v);
-        // console.log(this._lastActivatedRoute);
+        activeRoute.views.push(viewIdx);
         break;
       default:
         console.log('ignoring event: ', name);
@@ -62,6 +73,7 @@ TransitionData.prototype = {
           return payload.view.elementId === v.id;
         });
         viewData.endTime = t();
+        viewData.elapsedTime = viewData.endTime - viewData.startTime;
         break;
       default:
         console.log('~ignoring event: ', name);

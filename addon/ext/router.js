@@ -10,13 +10,13 @@ export default Mixin.create({
 
   _doURLTransition() {
     const promise = this._super(...arguments);
-    this.trigger('willTransition', { promise });
+    this.trigger('_emberPerfWillTransition', { promise });
     return promise;
   },
 
   _doTransition() {
     const promise = this._super(...arguments);
-    this.trigger('willTransition', { promise });
+    this.trigger('_emberPerfWillTransition', { promise });
     return promise;
   },
 
@@ -24,7 +24,7 @@ export default Mixin.create({
     this.get('perfService')._measureTransition(transitionInfo);
   },
 
-  _transitionStartListener: on('willTransition', function(transitionInfo) {
+  _transitionStartListener: on('_emberPerfWillTransition', function(transitionInfo) {
     this._beginPerfDataCollection(transitionInfo);
   })
 });

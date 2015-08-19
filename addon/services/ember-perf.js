@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import TransitionData from '../core/transition-data';
 
 const { on, Evented, assert, String: { classify }, computed: { defaultTo } } = Ember;
 const Base = Ember.Service || Ember.Object;
@@ -29,24 +30,19 @@ export default Base.extend(Evented, {
     });
   },
 
-
   /**
    * Measure a transition (promise)
    * @param  {Promise} transitionInfo - promise associated with the transition
    * @private
    */
   _measureTransition(transitionInfo) {
-    let t = new Date().valueOf();
-    this.transitionData = {
-      startTime: t
-    };
+    this.transitionData = new TransitionData({
+      destURL: transitionInfo.promise.intent.url,
+      destRoute: transitionInfo.promise.targetName
+    });
     transitionInfo.promise.then(() => {
-      let tEnd = new Date().valueOf();
-      const event = Ember.$.extend(this.transitionData, {
-        endTime: tEnd,
-        elapsedTime: tEnd - this.transitionData.startTime
-      });
-      // this.transitionData = null;
+      this.transitionData.finish();
+      const event = this.transitionData;
       this.trigger('transitionComplete', event);
     });
   },
@@ -58,10 +54,7 @@ export default Base.extend(Evented, {
    */
   routeActivated(route) {
     assert('Expected non-empty transitionData', this.transitionData);
-    if (!this.transitionData.routes) {
-      this.transitionData.routes = Ember.A();
-    }
-    this.transitionData.routes.addObject({ name: route.routeName });
+    this.transitionData.activateRoute(route);
     this.debugLog(`route activated - ${route.get('routeName')}`);
   },
 
@@ -72,18 +65,8 @@ export default Base.extend(Evented, {
    */
   routeDeactivated(route) {
     assert('Expected non-empty transitionData', this.transitionData);
-    if (!this.transitionData.routes) {
-      this.transitionData.routes = Ember.A();
-    }
-    const routeObj = this.transitionData.routes.findBy('name', route.routeName);
-    this.transitionData.routes.removeObject(routeObj);
+    this.transitionData.deactivateRoute(route);
     this.debugLog(`route deactivated - ${route.get('routeName')}`);
-  },
-
-  currentLoadingRoute() {
-    assert('Expected non-empty transitionData', this.transitionData);
-    let meaningfulRoutes = this.transitionData.routes.filter(routeName => routeName !== 'loading');
-    return meaningfulRoutes[meaningfulRoutes.length - 1];
   },
 
   /**
@@ -94,40 +77,28 @@ export default Base.extend(Evented, {
    * @public
    */
   renderBefore(name, timestamp, payload) {
-    const route = this.currentLoadingRoute();
-    if (!route.views) {
-      route.views = Ember.A();
-    }
-    if (!payload.view) {
-      return;
-    }
-    route.views.addObject({
-      object: payload.object,
-      viewId: payload.view.elementId,
-      containerKey: payload.view._debugContainerKey,
-      startTime: timestamp
-    });
+    assert('Expected non-empty transitionData', this.transitionData);
+    this.transitionData.willRender(name, timestamp, payload);
+    this.debugLog(`view will render - ${(payload.view || {})._debugContainerKey}`);
   },
 
-  /**
-   * Hook that's called after a view finishes rendering
-   * @param  {String} name      The name of the view that just rendered
-   * @param  {int}    timestamp The time at which this event was fired
-   * @param  {Object} payload   More information about the view/template
-   * @public
-   */
   renderAfter(name, timestamp, payload) {
-    const route = this.currentLoadingRoute();
-    const viewObject = route.views.findBy('object', payload.object);
-    if (!viewObject) {
-      return;
-    }
-    viewObject.endTime = timestamp;
-    viewObject.renderTime = viewObject.endTime - viewObject.startTime;
+    assert('Expected non-empty transitionData', this.transitionData);
+    this.transitionData.didRender(name, timestamp, payload);
+    this.debugLog(`view did render - ${(payload.view || {})._debugContainerKey}`);
   },
 
   transitionLogger: on('transitionComplete', function(data) {
-    this.debugLog('DATA', data);
-    this.debugLog(`Transition complete ${data.elapsedTime}ms`);
+    console.group(`Top-Level Transition to ${data.destRoute} (${data.destURL}): ${data.elapsedTime}ms`);
+    for (let i = 0; i < data._routes.length; i++) {
+      console.group(`${data._routes[i].name} ${data._routes[i].elapsedTime}ms`);
+      for (let j = 0; j < (data._routes[i].views || []).length; j++) {
+        const v = data._views[data._routes[i].views[j]];
+        console.group(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
+        console.groupEnd();
+      }
+      console.groupEnd();
+    }
+    console.groupEnd();
   })
 });
