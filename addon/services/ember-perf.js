@@ -1,14 +1,14 @@
 import Ember from 'ember';
 import TransitionData from '../core/transition-data';
 
-const { on, Evented, assert, String: { classify }, computed: { defaultTo } } = Ember;
+const { on, Evented, assert, String: { classify }, computed: { oneWay } } = Ember;
 const Base = Ember.Service || Ember.Object;
 const { keys } = Object;
 
 export default Base.extend(Evented, {
   transitionData: null,
 
-  debugMode: defaultTo('defaultDebugMode'),
+  debugMode: oneWay('defaultDebugMode'),
 
   debugLog() {
     if (this.get('debugMode')) {
