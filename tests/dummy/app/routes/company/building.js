@@ -9,7 +9,7 @@ export default Ember.Route.extend({
     if (buildingIds.indexOf(parseInt(params.building_id, 10)) < 0) {
       return null;
     } else {
-      return randomWait(Ember.testing ? 10 : 2400, Ember.testing ? 10 : 300).then(() => {
+      return randomWait(Ember.testing ? 4 : 2400, Ember.testing ? 2 : 300).then(() => {
         return BUILDINGS.filter(b => `${b.id}` === params.building_id )[0];
       });
     }
