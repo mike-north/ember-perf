@@ -92,7 +92,7 @@ module.exports = {
       name: 'ember-release',
       dependencies: {
         ember: 'components/ember#release',
-        'ember-data': '~2.0.0',
+        'ember-data': '~2.0.0-beta.1',
         handlebars: null
       },
       resolutions: {
@@ -103,7 +103,7 @@ module.exports = {
       name: 'ember-beta',
       dependencies: {
         ember: 'components/ember#beta',
-        'ember-data': '~2.0.0',
+        'ember-data': '~2.0.0-beta.1',
         handlebars: null
       },
       resolutions: {
@@ -114,7 +114,7 @@ module.exports = {
       name: 'ember-canary',
       dependencies: {
         ember: 'components/ember#canary',
-        'ember-data': '~2.0.0',
+        'ember-data': '~2.0.0-beta.1',
         handlebars: null
       },
       resolutions: {
