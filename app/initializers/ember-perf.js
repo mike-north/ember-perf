@@ -23,7 +23,10 @@ function injectServiceOntoFactories(emberPerf, container, application) {
   });
 }
 
-export function initialize(container, application) {
+export function initialize() {
+  const application = arguments[1] || arguments[0];
+  const container = application.__container__;
+  
   const {
     emberPerf
   } = config;
