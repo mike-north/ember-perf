@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import TransitionData from '../core/transition-data';
 
-const { on, Evented, assert, String: { classify }, computed: { oneWay } } = Ember;
+const { Evented, assert, String: { classify }, computed: { oneWay } } = Ember;
 const Base = Ember.Service || Ember.Object;
 const { keys } = Object;
 
@@ -86,19 +86,19 @@ export default Base.extend(Evented, {
     assert('Expected non-empty transitionData', this.transitionData);
     this.transitionData.didRender(name, timestamp, payload);
     this.debugLog(`view did render - ${(payload.view || {})._debugContainerKey}`);
-  },
+  }
 
-  transitionLogger: on('transitionComplete', function(data) {
-    console.group(`Top-Level Transition to ${data.destRoute} (${data.destURL}): ${data.elapsedTime}ms`);
-    for (let i = 0; i < data._routes.length; i++) {
-      console.group(`${data._routes[i].name} ${data._routes[i].elapsedTime}ms`);
-      for (let j = 0; j < (data._routes[i].views || []).length; j++) {
-        const v = data._views[data._routes[i].views[j]];
-        console.group(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
-        console.groupEnd();
-      }
-      console.groupEnd();
-    }
-    console.groupEnd();
-  })
+  // transitionLogger: on('transitionComplete', function(data) {
+  //   console.group(`Top-Level Transition to ${data.destRoute} (${data.destURL}): ${data.elapsedTime}ms`);
+  //   for (let i = 0; i < data.routes.length; i++) {
+  //     console.group(`${data.routes[i].name} ${data.routes[i].elapsedTime}ms`);
+  //     for (let j = 0; j < (data.routes[i].views || []).length; j++) {
+  //       const v = data._views[data.routes[i].views[j]];
+  //       console.group(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
+  //       console.groupEnd();
+  //     }
+  //     console.groupEnd();
+  //   }
+  //   console.groupEnd();
+  // })
 });
