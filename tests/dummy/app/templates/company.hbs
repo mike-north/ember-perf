@@ -1,7 +1,11 @@
 <p>
-	{{#link-to 'companies.info'}}
-		&lt; Back to Companies
-	{{/link-to}}
+  {{#link-to 'companies.info'}}
+    &lt; Back to Companies
+  {{/link-to}}
 </p>
 <h2>{{content.name}}</h2>
+<p>
+  {{view 'items-list' class='building-ids-list horiz-list' content=content.buildingIds itemClass='building-id' itemRoute='company.building'}}
+</p>
+
 {{outlet}}

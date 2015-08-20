@@ -37,7 +37,7 @@ Router.map(function() {
   });
   this[NESTED_ROUTE_FN]('company', { path: 'company/:id' }, function() {
     this[NESTED_ROUTE_FN](rn('company', 'buildings'), { path: 'buildings' });
-    this[NESTED_ROUTE_FN](rn('company', 'building'), { path: 'building/:id' }, function() {
+    this[NESTED_ROUTE_FN](rn('company', 'building'), { path: 'building/:building_id' }, function() {
       this.route('floors');
       this.route('floor', { path: 'floor/:id' });
     });

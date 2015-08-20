@@ -14,13 +14,13 @@ module('Acceptance | companies', {
   }
 });
 
-test('visiting /companies', function(assert) {
+test('Basic demo page test', function(assert) {
   visit('/companies');
 
   andThen(function() {
     assert.equal(currentURL(), '/companies');
-    assert.equal(find('.companies-list li').length, 1, 'One company in list');
-    assert.equal(find('.companies-list .company')[0].innerText, 'Yahoo Inc', 'Yahoo is first company');
+    assert.equal(find('.companies-list li').length, 3, 'One company in list');
+    assert.equal(find('.companies-list .company')[0].innerText, 'Yahoo', 'Yahoo is first company');
   });
 
   click('.companies-list .company:first-child a');
