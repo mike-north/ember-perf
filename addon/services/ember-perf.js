@@ -5,6 +5,8 @@ const { Evented, assert, String: { classify }, computed: { oneWay } } = Ember;
 const Base = Ember.Service || Ember.Object;
 const { keys } = Object;
 
+let transitionCounter = 0;
+
 export default Base.extend(Evented, {
   transitionData: null,
 
@@ -36,9 +38,23 @@ export default Base.extend(Evented, {
    * @private
    */
   _measureTransition(transitionInfo) {
+    if (transitionInfo.promise._emberPerfTransitionId) {
+      return;
+    }
+    transitionInfo.promise._emberPerfTransitionId = transitionCounter++;
+    let transitionRoute = transitionInfo.promise.targetName || transitionInfo.promise.intent.name;
+    let transitionCtxt = transitionInfo.promise.intent.contexts ? transitionInfo.promise.intent.contexts[0] : null;
+    let transitionUrl = transitionInfo.promise.intent.url;
+    if (!transitionUrl) {
+      if (transitionCtxt) {
+        transitionUrl = transitionInfo.promise.router.generate(transitionRoute, transitionCtxt);
+      } else {
+        transitionUrl = transitionInfo.promise.router.generate(transitionRoute);
+      }
+    }
     this.transitionData = new TransitionData({
-      destURL: transitionInfo.promise.intent.url,
-      destRoute: transitionInfo.promise.targetName
+      destURL: transitionUrl,
+      destRoute: transitionRoute
     });
     transitionInfo.promise.then(() => {
       this.transitionData.finish();
