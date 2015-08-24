@@ -44,12 +44,12 @@ test('Initial load, then drilling in', function(assert) {
     assert.equal(data.routes
       .map(r => r.startTime)
       .filter(x => Ember.typeOf(x) !== 'number'), 0, 'All route startTimes are numbers');
-    // assert.equal(data.routes
-    //   .map(r => r.endTime)
-    //   .filter(x => Ember.typeOf(x) !== 'number'), 0, 'All route endTimes are numbers');
-    // assert.equal(data.routes
-    //   .map(r => r.elapsedTime)
-    //   .filter(x => Ember.typeOf(x) !== 'number'), 0, 'All route elapsedTime are numbers');
+    assert.equal(data.routes
+      .map(r => r.endTime)
+      .filter(x => Ember.typeOf(x) !== 'number'), 0, 'All route endTimes are numbers');
+    assert.equal(data.routes
+      .map(r => r.elapsedTime)
+      .filter(x => Ember.typeOf(x) !== 'number'), 0, 'All route elapsedTime are numbers');
   });
 
 });
