@@ -64,8 +64,6 @@ TransitionData.prototype = {
     switch (name) {
       case 'render.component':
       case 'render.view':
-        const id = payload.view.elementId;
-        console.log('didRender - ', id);
         const [viewData] = this.viewData.filter(v => {
           return payload.view.elementId === v.id;
         });
