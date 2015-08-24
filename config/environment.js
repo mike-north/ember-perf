@@ -3,7 +3,7 @@
 module.exports = function(/* environment, appConfig */) {
   return {
   	emberPerf: {
-  		debugMode: true,
+  		debugMode: false,
   		logRerenders: true,
   		injectionFactories: ['route', 'adapter']
   	}

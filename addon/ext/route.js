@@ -7,8 +7,9 @@ export default Mixin.create({
     this.get('perfService').routeActivated(this);
     this._super(...arguments);
   },
-  deactivate() {
-    this.get('perfService').routeDeactivated(this);
-    this._super(...arguments);
+
+  renderTemplate() {
+  	this.get('perfService').routeWillRender(this);
+  	this._super(...arguments);
   }
 });

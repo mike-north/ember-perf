@@ -63,10 +63,10 @@ export default Base.extend(Evented, {
    * @param  {Ember.Route} route
    * @public
    */
-  routeDeactivated(route) {
+  routeWillRender(route) {
     assert('Expected non-empty transitionData', this.transitionData);
-    this.transitionData.deactivateRoute(route);
-    this.debugLog(`route deactivated - ${route.get('routeName')}`);
+    this.transitionData.routeFinishedSetup(route);
+    this.debugLog(`route will render - ${route.get('routeName')}`);
   },
 
   /**

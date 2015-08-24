@@ -10,7 +10,7 @@ Package | Ember Versions | Version
 `ember-perf` | `1.10`, `1.11`, `1.12`, `1.13` | [![npm version](https://badge.fury.io/js/ember-perf.svg)](http://badge.fury.io/js/ember-perf)
 `ember-perf-handlebars` | `1.5`, `1.6`, `1.7`, `1.8`, `1.9` |  [![npm version](https://badge.fury.io/js/ember-perf-handlebars.svg)](http://badge.fury.io/js/ember-perf-handlebars) 
 
-Performance instrumentation for ember.js apps
+Paege load performance instrumentation for ember.js apps
 
 ## Setup
 
@@ -34,16 +34,11 @@ ember install ember-perf
 
 ## Running
 
-* `ember server`
+* `npm run tryver <EMBER_TRY_SCENARIO> s` (for example, `npm run tryver ember-1.8 s`)
 * Visit your app at http://localhost:4200.
 
 ## Running Tests
 
-* `ember test`
-* `ember test --server`
+* `npm run tryver <EMBER_TRY_SCENARIO>` (for example, `npm run tryver ember-1.8`)
+* `npm run tryver <EMBER_TRY_SCENARIO> test --server` (for example, `npm run tryver ember-1.8 test --server`)
 
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).

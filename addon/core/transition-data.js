@@ -30,12 +30,11 @@ TransitionData.prototype = {
     this._lastActivatedRoute = r;
   },
 
-  deactivateRoute(/*route*/) {
-    // const endTime = t();
-    // const [r] = this.routes.filter(_r =>  _r.name === route.routeName);
-    // debugger;
-    // r.endTime = endTime;
-    // r.elapsedTime = r.endTime - r.startTime;
+  routeFinishedSetup(route) {
+    const endTime = t();
+    const [r] = this.routes.filter(_r =>  _r.name === route.routeName);
+    r.endTime = endTime;
+    r.elapsedTime = r.endTime - r.startTime;
   },
 
   willRender(name, timestamp, payload) {
