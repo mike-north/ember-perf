@@ -42,3 +42,10 @@ ember install ember-perf
 * `npm run tryver <EMBER_TRY_SCENARIO>` (for example, `npm run tryver ember-1.8`)
 * `npm run tryver <EMBER_TRY_SCENARIO> test --server` (for example, `npm run tryver ember-1.8 test --server`)
 
+## Building
+
+* `ember build`
+
+For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+
+![Analytics](https://ga-beacon.appspot.com/UA-66610985-1/mike-north/ember-perf/readme)
