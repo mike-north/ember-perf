@@ -9,7 +9,7 @@ export default Mixin.create({
   },
 
   renderTemplate() {
-  	this.get('perfService').routeWillRender(this);
-  	this._super(...arguments);
+    this.get('perfService').routeWillRender(this);
+    this._super(...arguments);
   }
 });
