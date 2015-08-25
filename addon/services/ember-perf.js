@@ -42,9 +42,11 @@ export default Base.extend(Evented, {
       return;
     }
     transitionInfo.promise._emberPerfTransitionId = transitionCounter++;
-    let transitionRoute = transitionInfo.promise.targetName || transitionInfo.promise.intent.name;
-    let transitionCtxt = transitionInfo.promise.intent.contexts ? transitionInfo.promise.intent.contexts[0] : null;
-    let transitionUrl = transitionInfo.promise.intent.url;
+    let transitionRoute = transitionInfo.promise.targetName || Ember.get(transitionInfo.promise, 'intent.name');
+    let transitionCtxt = Ember.get(transitionInfo.promise, 'intent.contexts') ? (Ember.get(transitionInfo.promise, 'intent.contexts') || [])[0] : null;
+    let transitionUrl = Ember.get(transitionInfo.promise, 'intent.url');
+    Ember.assert('Must have at least a route name', transitionRoute);
+
     if (!transitionUrl) {
       if (transitionCtxt) {
         transitionUrl = transitionInfo.promise.router.generate(transitionRoute, transitionCtxt);
@@ -107,18 +109,20 @@ export default Base.extend(Evented, {
   },
 
   transitionLogger: Ember.on('transitionComplete', function(data) {
-    console.group(`Top-Level Transition to ${data.destRoute} (${data.destURL}): ${data.elapsedTime}ms`);
-    for (let i = 0; i < data.routes.length; i++) {
-      console.group(`${data.routes[i].name} ${data.routes[i].elapsedTime}ms`);
-      if (data.routes[i].views) {
-        for (let j = 0; j < (data.routes[i].views || []).length; j++) {
-          const v = data.viewData[data.routes[i].views[j]];
-          console.group(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
-          console.groupEnd();
+    if (this.get('debugMode')) {
+      console.group(`Top-Level Transition to ${data.destRoute} (${data.destURL}): ${data.elapsedTime}ms`);
+      for (let i = 0; i < data.routes.length; i++) {
+        console.group(`${data.routes[i].name} ${data.routes[i].elapsedTime}ms`);
+        if (data.routes[i].views) {
+          for (let j = 0; j < (data.routes[i].views || []).length; j++) {
+            const v = data.viewData[data.routes[i].views[j]];
+            console.group(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
+            console.groupEnd();
+          }
         }
+        console.groupEnd();
       }
       console.groupEnd();
     }
-    console.groupEnd();
   })
 });
