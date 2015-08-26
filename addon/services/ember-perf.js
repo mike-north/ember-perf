@@ -5,6 +5,8 @@ const { Evented, assert, String: { classify }, computed: { oneWay } } = Ember;
 const Base = Ember.Service || Ember.Object;
 const { keys } = Object;
 
+let transitionCounter = 0;
+
 export default Base.extend(Evented, {
   transitionData: null,
 
@@ -36,14 +38,32 @@ export default Base.extend(Evented, {
    * @private
    */
   _measureTransition(transitionInfo) {
+    if (transitionInfo.promise._emberPerfTransitionId) {
+      return;
+    }
+    transitionInfo.promise._emberPerfTransitionId = transitionCounter++;
+    let transitionRoute = transitionInfo.promise.targetName || Ember.get(transitionInfo.promise, 'intent.name');
+    let transitionCtxt = Ember.get(transitionInfo.promise, 'intent.contexts') ? (Ember.get(transitionInfo.promise, 'intent.contexts') || [])[0] : null;
+    let transitionUrl = Ember.get(transitionInfo.promise, 'intent.url');
+    Ember.assert('Must have at least a route name', transitionRoute);
+
+    if (!transitionUrl) {
+      if (transitionCtxt) {
+        transitionUrl = transitionInfo.promise.router.generate(transitionRoute, transitionCtxt);
+      } else {
+        transitionUrl = transitionInfo.promise.router.generate(transitionRoute);
+      }
+    }
     this.transitionData = new TransitionData({
-      destURL: transitionInfo.promise.intent.url,
-      destRoute: transitionInfo.promise.targetName
+      destURL: transitionUrl,
+      destRoute: transitionRoute
     });
     transitionInfo.promise.then(() => {
       this.transitionData.finish();
       const event = this.transitionData;
-      this.trigger('transitionComplete', event);
+      Ember.run.scheduleOnce('afterRender', () => {
+        this.trigger('transitionComplete', event);
+      });
     });
   },
 
@@ -63,10 +83,10 @@ export default Base.extend(Evented, {
    * @param  {Ember.Route} route
    * @public
    */
-  routeDeactivated(route) {
+  routeWillRender(route) {
     assert('Expected non-empty transitionData', this.transitionData);
-    this.transitionData.deactivateRoute(route);
-    this.debugLog(`route deactivated - ${route.get('routeName')}`);
+    this.transitionData.routeFinishedSetup(route);
+    this.debugLog(`route will render - ${route.get('routeName')}`);
   },
 
   /**
@@ -86,19 +106,23 @@ export default Base.extend(Evented, {
     assert('Expected non-empty transitionData', this.transitionData);
     this.transitionData.didRender(name, timestamp, payload);
     this.debugLog(`view did render - ${(payload.view || {})._debugContainerKey}`);
-  }
+  },
 
-  // transitionLogger: on('transitionComplete', function(data) {
-  //   console.group(`Top-Level Transition to ${data.destRoute} (${data.destURL}): ${data.elapsedTime}ms`);
-  //   for (let i = 0; i < data.routes.length; i++) {
-  //     console.group(`${data.routes[i].name} ${data.routes[i].elapsedTime}ms`);
-  //     for (let j = 0; j < (data.routes[i].views || []).length; j++) {
-  //       const v = data._views[data.routes[i].views[j]];
-  //       console.group(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
-  //       console.groupEnd();
-  //     }
-  //     console.groupEnd();
-  //   }
-  //   console.groupEnd();
-  // })
+  transitionLogger: Ember.on('transitionComplete', function(data) {
+    if (this.get('debugMode')) {
+      console.group(`Top-Level Transition to ${data.destRoute} (${data.destURL}): ${data.elapsedTime}ms`);
+      for (let i = 0; i < data.routes.length; i++) {
+        console.group(`${data.routes[i].name} ${data.routes[i].elapsedTime}ms`);
+        if (data.routes[i].views) {
+          for (let j = 0; j < (data.routes[i].views || []).length; j++) {
+            const v = data.viewData[data.routes[i].views[j]];
+            console.group(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
+            console.groupEnd();
+          }
+        }
+        console.groupEnd();
+      }
+      console.groupEnd();
+    }
+  })
 });

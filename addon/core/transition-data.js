@@ -27,15 +27,16 @@ TransitionData.prototype = {
       views: []
     };
     this.routes.push(r);
-    this._lastActivatedRoute = r;
+    if (route.routeName.indexOf('loading') < 0 || !this._lastActivatedRoute) {
+      this._lastActivatedRoute = r;
+    }
   },
 
-  deactivateRoute(/*route*/) {
-    // const endTime = t();
-    // const [r] = this.routes.filter(_r =>  _r.name === route.routeName);
-    // debugger;
-    // r.endTime = endTime;
-    // r.elapsedTime = r.endTime - r.startTime;
+  routeFinishedSetup(route) {
+    const endTime = t();
+    const [r] = this.routes.filter(r => r.name === route.routeName);
+    r.endTime = endTime;
+    r.elapsedTime = r.endTime - r.startTime;
   },
 
   willRender(name, timestamp, payload) {
@@ -49,14 +50,13 @@ TransitionData.prototype = {
           id,
           containerKey: payload.view._debugContainerKey
         };
-        let activeRoute = this._lastActivatedRoute;
         const viewIdx = this.viewData.length;
         this.viewData.push(v);
 
         if (payload.view.parentView) {
           v.parentViewId = payload.view.parentView.elementId;
         }
-        activeRoute.views.push(viewIdx);
+        this._lastActivatedRoute.views.push(viewIdx);
         break;
     }
   },
@@ -65,8 +65,6 @@ TransitionData.prototype = {
     switch (name) {
       case 'render.component':
       case 'render.view':
-        const id = payload.view.elementId;
-        console.log('didRender - ', id);
         const [viewData] = this.viewData.filter(v => {
           return payload.view.elementId === v.id;
         });
