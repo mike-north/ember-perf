@@ -2,6 +2,7 @@ import Ember from 'ember';
 import { module, test } from 'qunit';
 import startApp from '../../tests/helpers/start-app';
 import validateEvent from '../../tests/helpers/validate-event';
+import performanceNow from 'ember-perf/utils/performance-now';
 
 let application;
 
@@ -19,7 +20,7 @@ module('Acceptance | event data structure', {
 
 test('Initial load, then drilling in', function(assert) {
   let datas = [];
-  let testStartTime = new Date().valueOf();
+  let testStartTime = performanceNow();
 
   application.perfService.on('transitionComplete', data => {
     datas.push(data);
@@ -41,7 +42,7 @@ test('Initial load, then drilling in', function(assert) {
 
 test('Initial load, then drilling in, then back out', function(assert) {
   let datas = [];
-  let testStartTime = new Date().valueOf();
+  let testStartTime = performanceNow();
 
   application.perfService.on('transitionComplete', data => {
     datas.push(data);
@@ -77,7 +78,7 @@ test('Initial load, then drilling in, then back out', function(assert) {
 
 test('Initial load, then drilling in, then pivoting', function(assert) {
   let datas = [];
-  let testStartTime = new Date().valueOf();
+  let testStartTime = performanceNow();
 
   application.perfService.on('transitionComplete', data => {
     datas.push(data);
