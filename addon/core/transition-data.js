@@ -1,14 +1,16 @@
+import performanceNow from '../utils/performance-now';
+
 function TransitionData(args) {
   this.destURL = args.destURL;
   this.destRoute = args.destRoute;
-  this.startTime = new Date().valueOf();
+  this.startTime = performanceNow();
   this.endTime = null;
   this.routes = [];
   this.viewData = [];
 }
 
 function t() {
-  return new Date().valueOf();
+  return performanceNow();
 }
 
 TransitionData.prototype = {
