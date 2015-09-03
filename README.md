@@ -13,17 +13,31 @@ Page load performance instrumentation for ember.js apps
 
 ## Setup
 
-### Ember.js < 1.10
-
-```
+```sh
+# Ember.js < 1.10
 ember install ember-perf-handlebars
-```
-
-### Ember.js >= 1.10
-
-```
+# Ember.js >= 1.10
 ember install ember-perf
 ```
+
+### Configuration
+
+This addon can be configured in your **config/environment.js** file
+
+```js
+if (environment === 'development') {
+	// Log transition performance
+	ENV.emberPerf = {
+      debugMode: true
+    };
+}
+
+```
+
+* **debugMode** (default: `false`) - Logs transition performance to the browser console
+
+![TransitionPerformance](http://i60.tinypic.com/2dtvfwz.png)
+
 
 ## Developer Installation
 
