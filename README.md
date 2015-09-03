@@ -1,5 +1,6 @@
 # ember-perf
 
+[![Ember Observer Score](http://emberobserver.com/badges/ember-perf.svg)](http://emberobserver.com/addons/ember-perf)
 [![Dependency Status](https://david-dm.org/mike-north/ember-perf.svg)](https://david-dm.org/mike-north/ember-perf)
 [![devDependency Status](https://david-dm.org/mike-north/ember-perf/dev-status.svg)](https://david-dm.org/mike-north/ember-perf#info=devDependencies)
 [![Code Climate](https://codeclimate.com/github/mike-north/ember-perf/badges/gpa.svg)](https://codeclimate.com/github/mike-north/ember-perf)
