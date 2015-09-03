@@ -31,7 +31,13 @@ ember g ember-perf-initializer monitor-perf
 
 ```
 
-This will create a file for you called **app/initializers/monitor-perf.js**
+This will create files for you called **app/initializers/monitor-perf.js** and **app/instance-initializers/monitor-perf.js**. You then need to go to the instance intializer and fill in the body of the event listener with something useful (i.e., sending the performance data somewhere).
+
+```js
+perfService.on('transitionComplete', transitionData => {
+  // DO SOMETHING WITH TRANSITION DATA
+});
+```
 
 
 ### Configuration
