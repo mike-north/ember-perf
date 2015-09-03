@@ -48,6 +48,6 @@ export function initialize() {
 };
 
 export default {
-  name: 'ember-perf',
+  name: 'ember-perf-setup',
   initialize: initialize
 };

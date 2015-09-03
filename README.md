@@ -20,6 +20,19 @@ ember install ember-perf-handlebars
 ember install ember-perf
 ```
 
+### Responding to performance events
+
+First, create an initializer, which will set up an event listener to monitor
+performance events
+
+```sh
+ember g ember-perf-initializer monitor-perf
+
+```
+
+This will create a file for you called **app/initializers/monitor-perf.js**
+
+
 ### Configuration
 
 This addon can be configured in your **config/environment.js** file
