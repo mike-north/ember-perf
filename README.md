@@ -44,6 +44,64 @@ perfService.on('transitionComplete', transitionData => {
 });
 ```
 
+#### What does this `transitionData` object look like?
+
+Here's an example
+
+```js
+{
+	"destURL": "/",
+	"destRoute": "index",
+	"startTime": 402.85299999959534,
+	"endTime": 427.16400000063004,
+	"routes": [{
+		"name": "application",
+		"debugContainerKey": "route:application",
+		"startTime": 408.78300000076706,
+		"views": [],
+		"endTime": 413.8860000002751,
+		"elapsedTime": 5.102999999508029
+	}, {
+		"name": "index",
+		"debugContainerKey": "route:index",
+		"startTime": 415.29199999968114,
+		"views": [0, 1, 2], // references to viewData array (by index)
+		"endTime": 418.11000000052445,
+		"elapsedTime": 2.8180000008433126
+	}],
+	"viewData": [{
+		"startTime": 431.6899999994348,
+		"id": "ember341",
+		"containerKey": "view:-outlet",
+		"endTime": 464.19799999966926,
+		"elapsedTime": 32.50800000023446
+	}, {
+		"startTime": 438.75200000002224,
+		"id": "ember347",
+		"containerKey": "view:toplevel",
+		"parentViewId": "ember341",
+		"endTime": 463.9900000001944,
+		"elapsedTime": 25.23800000017218
+	}, {
+		"startTime": 450.5559999997786,
+		"id": "ember365",
+		"containerKey": "component:-link-to",
+		"parentViewId": "ember347",
+		"endTime": 463.54000000064843,
+		"elapsedTime": 12.984000000869855
+	}],
+	"_lastActivatedRoute": {
+		"name": "index",
+		"debugContainerKey": "route:index",
+		"startTime": 415.29199999968114,
+		"views": [0, 1, 2],
+		"endTime": 418.11000000052445,
+		"elapsedTime": 2.8180000008433126
+	},
+	"elapsedTime": 24.3110000010347
+}
+```
+
 
 ### Configuration
 
