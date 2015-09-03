@@ -90,14 +90,6 @@ Here's an example
 		"endTime": 463.54000000064843,
 		"elapsedTime": 12.984000000869855
 	}],
-	"_lastActivatedRoute": {
-		"name": "index",
-		"debugContainerKey": "route:index",
-		"startTime": 415.29199999968114,
-		"views": [0, 1, 2],
-		"endTime": 418.11000000052445,
-		"elapsedTime": 2.8180000008433126
-	},
 	"elapsedTime": 24.3110000010347
 }
 ```
