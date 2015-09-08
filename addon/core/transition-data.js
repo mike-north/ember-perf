@@ -4,6 +4,7 @@ function TransitionData(args) {
   this.destURL = args.destURL;
   this.destRoute = args.destRoute;
   this.startTime = performanceNow();
+  this._active = true;
   this.endTime = null;
   this.routes = [];
   this.viewData = [];
@@ -18,6 +19,7 @@ TransitionData.prototype = {
   finish() {
     this.endTime = t();
     this.elapsedTime = this.endTime - this.startTime;
+    this._active = false;
   },
 
   activateRoute(route) {
@@ -42,6 +44,10 @@ TransitionData.prototype = {
   },
 
   willRender(name, timestamp, payload) {
+    if (!this._active) {
+      return;
+    }
+
     switch (name) {
       case 'render.component':
       case 'render.view':
@@ -64,6 +70,10 @@ TransitionData.prototype = {
   },
 
   didRender(name, timestamp, payload) {
+    if (!this._active) {
+      return;
+    }
+
     switch (name) {
       case 'render.component':
       case 'render.view':
