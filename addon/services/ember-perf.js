@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import TransitionData from '../core/transition-data';
+import RenderData from '../core/render-data';
 
-const { Evented, assert, String: { classify }, computed: { oneWay } } = Ember;
+const { Evented, assert, String: { classify }, computed: { oneWay }, RSVP: { defer } } = Ember;
 const Base = Ember.Service || Ember.Object;
 const { keys } = Object;
 
@@ -54,7 +55,7 @@ export default Base.extend(Evented, {
         transitionUrl = transitionInfo.promise.router.generate(transitionRoute);
       }
     }
-    this.transitionData = new TransitionData({
+    this.renderData = this.transitionData = new TransitionData({
       destURL: transitionUrl,
       destRoute: transitionRoute
     });
@@ -65,6 +66,30 @@ export default Base.extend(Evented, {
         this.trigger('transitionComplete', event);
       });
     });
+  },
+
+  /**
+   * Method to be called to measure one full pass of rendering.
+   *
+   * @returns {Promise} Returns a promise that resolves with the render data.
+   * @public
+   */
+  measureRender() {
+    this.transitionData = null;
+
+    let deferred = defer(`measureRender`);
+
+    this.renderData = new RenderData();
+
+    Ember.run.schedule('afterRender', () => {
+      const event = this.renderData;
+      event.finish();
+
+      this.trigger('renderComplete', event);
+      deferred.resolve(event);
+    });
+
+    return deferred.promise;
   },
 
   /**
@@ -97,14 +122,14 @@ export default Base.extend(Evented, {
    * @public
    */
   renderBefore(name, timestamp, payload) {
-    assert('Expected non-empty transitionData', this.transitionData);
-    this.transitionData.willRender(name, timestamp, payload);
+    assert('Expected non-empty renderData', this.renderData);
+    this.renderData.willRender(name, timestamp, payload);
     this.debugLog(`view will render - ${(payload.view || {})._debugContainerKey}`);
   },
 
   renderAfter(name, timestamp, payload) {
-    assert('Expected non-empty transitionData', this.transitionData);
-    this.transitionData.didRender(name, timestamp, payload);
+    assert('Expected non-empty renderData', this.renderData);
+    this.renderData.didRender(name, timestamp, payload);
     this.debugLog(`view did render - ${(payload.view || {})._debugContainerKey}`);
   },
 
@@ -116,11 +141,21 @@ export default Base.extend(Evented, {
         if (data.routes[i].views) {
           for (let j = 0; j < (data.routes[i].views || []).length; j++) {
             const v = data.viewData[data.routes[i].views[j]];
-            console.group(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
-            console.groupEnd();
+            console.log(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
           }
         }
         console.groupEnd();
+      }
+      console.groupEnd();
+    }
+  }),
+
+  renderLogger: Ember.on('renderComplete', function(data) {
+    if (this.get('debugMode')) {
+      console.group(`Render Completed: ${data.elapsedTime}ms`);
+      for (let i = 0; i < data.viewData.length; i++) {
+        const v = data.viewData[i];
+        console.log(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
       }
       console.groupEnd();
     }

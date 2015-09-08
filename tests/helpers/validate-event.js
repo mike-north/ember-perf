@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 const { typeOf } = Ember;
 
-export default function(assert, now, data) {
+export default function(assert, now, data, eventType = 'transition') {
   assert.ok(data.endTime > data.startTime, 'end time is greater than start time');
   assert.ok(data.endTime > now, 'end time indicates time has passed since test start');
   assert.ok(data.startTime > now, 'start time indicates time has passed since test start');
@@ -10,16 +10,20 @@ export default function(assert, now, data) {
   assert.equal(typeOf(data.startTime), 'number', 'startTime is a number');
   assert.equal(typeOf(data.elapsedTime), 'number', 'elapsedTime is a number');
   assert.equal(data.endTime - data.startTime, data.elapsedTime, 'elapsedTime calculation is correct');
+  assert.equal(typeOf(data.viewData), 'array', 'viewData is an array');
 
-  assert.equal(typeOf(data.routes), 'array', 'data.routes is an array');
-  assert.deepEqual(data.routes.map(r => r.name), ['application', 'loading', 'company', 'company.loading', 'company.buildings'], 'Proper routes load');
-  assert.equal(data.routes
-    .map(r => r.startTime)
-    .filter(x => typeOf(x) !== 'number'), 0, 'All route startTimes are numbers');
-  assert.equal(data.routes
-    .map(r => r.endTime)
-    .filter(x => typeOf(x) !== 'number'), 0, 'All route endTimes are numbers');
-  assert.equal(data.routes
-    .map(r => r.elapsedTime)
-    .filter(x => typeOf(x) !== 'number' && x >= 0), 0, 'All route elapsedTime are numbers > 0');
+  if (eventType === 'transition') {
+    assert.equal(typeOf(data.routes), 'array', 'data.routes is an array');
+    assert.deepEqual(data.routes.map(r => r.name), ['application', 'loading', 'company', 'company.loading', 'company.buildings'], 'Proper routes load');
+    assert.equal(data.routes
+                 .map(r => r.startTime)
+                 .filter(x => typeOf(x) !== 'number'), 0, 'All route startTimes are numbers');
+    assert.equal(data.routes
+                 .map(r => r.endTime)
+                 .filter(x => typeOf(x) !== 'number'), 0, 'All route endTimes are numbers');
+    assert.equal(data.routes
+                 .map(r => r.elapsedTime)
+                 .filter(x => typeOf(x) !== 'number' && x >= 0), 0, 'All route elapsedTime are numbers > 0');
+  }
+
 }
