@@ -111,3 +111,26 @@ test('Initial load, then drilling in, then pivoting', function(assert) {
     assert.equal(data.destRoute, 'company.building.index', 'Intent route is correct');
   });
 });
+
+test('Initial measureRender', function(assert) {
+  let datas = [];
+  let testStartTime = performanceNow();
+
+  application.perfService.on('renderComplete', data => {
+    datas.push(data);
+  });
+
+  visit('/company/1/building/2');
+
+  andThen(function() {
+    assert.equal(datas.length, 0, 'measureRender is not fired for transitions');
+  });
+
+  click('.btn-edit');
+
+  andThen(function() {
+    assert.equal(datas.length, 1, 'Only one event fired');
+    let [ data ] = datas;
+    validateEvent(assert, testStartTime, data, 'render');
+  });
+});
