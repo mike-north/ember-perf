@@ -1,12 +1,17 @@
+import Ember from 'ember';
 import EmberPerfService from 'ember-perf/services/ember-perf';
 import RouterExt from 'ember-perf/ext/router';
 import RouteExt from 'ember-perf/ext/route';
 import config from '../config/environment';
-import instanceInitializer from '../instance-initializers/ember-perf';
+import instanceInitializer from 'ember-perf/instance-initializers/ember-perf';
 
 const {
   Router, Route
 } = Ember;
+
+if (Ember.Application.instanceInitializer) {
+  Ember.Application.instanceInitializer(instanceInitializer);
+}
 
 function injectServiceOntoFactories(emberPerf, application) {
   const {
