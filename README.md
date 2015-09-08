@@ -23,6 +23,8 @@ ember install ember-perf
 
 ### Responding to performance events
 
+#### Transition Events
+
 First, create an initializer, which will set up an event listener to monitor
 performance events
 
@@ -31,11 +33,11 @@ ember g ember-perf-initializer monitor-perf
 
 ```
 
-This will create files for you called 
+This will create files for you called
 
 * **app/initializers/monitor-perf.js**
 * **app/instance-initializers/monitor-perf.js**
- 
+
 You then need to go to the instance intializer and fill in the body of the event listener with something useful (i.e., sending the performance data somewhere).
 
 ```js
@@ -44,7 +46,37 @@ perfService.on('transitionComplete', transitionData => {
 });
 ```
 
-#### What does this `transitionData` object look like?
+#### Render Events
+
+To track render performance within a single route (i.e. how long did it take for an action triggered rerender to complete), you would use the `measureRender` method.
+
+```js
+// app/components/x-foo.js
+export default Ember.Component.extend({
+  emberPerf: Ember.inject.service(),
+
+  actions: {
+    measureStuff() {
+      const perf = this.get('emberPerf');
+
+      perf.measureRender()
+        .then(function(result) {
+          // do things with the result
+        });
+    }
+  }
+});
+```
+
+You can also use the `renderComplete` event on the service from `app/instance-initializers/monitor-perf.js`:
+
+```js
+perfService.on('renderComplete', renderData => {
+  // Do awesome things!
+});
+```
+
+### What does this `transitionData` object look like?
 
 Here's an example
 

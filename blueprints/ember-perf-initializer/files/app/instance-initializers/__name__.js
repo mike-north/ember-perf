@@ -8,6 +8,10 @@ export function initialize() {
     perfService.on('transitionComplete', transitionData => {
       // DO SOMETHING WITH TRANSITION DATA
     });
+    perfService.on('renderComplete', transitionData => {
+      // DO SOMETHING WITH RENDER DATA
+    });
+
 }
 
 export default {

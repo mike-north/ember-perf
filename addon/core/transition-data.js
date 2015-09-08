@@ -1,90 +1,49 @@
+import Ember from 'ember';
 import performanceNow from '../utils/performance-now';
+import RenderData from './render-data';
+
+// allow compatibility with IE8 via Ember's create polyfill
+const create = Object.create || Ember.create;
 
 function TransitionData(args) {
+  this._super$constructor(...arguments);
+
   this.destURL = args.destURL;
   this.destRoute = args.destRoute;
-  this.startTime = performanceNow();
-  this._active = true;
-  this.endTime = null;
   this.routes = [];
-  this.viewData = [];
 }
 
 function t() {
   return performanceNow();
 }
 
-TransitionData.prototype = {
+let prototype = TransitionData.prototype = create(RenderData.prototype);
+prototype.constructor = TransitionData;
+prototype._super$constructor = RenderData;
 
-  finish() {
-    this.endTime = t();
-    this.elapsedTime = this.endTime - this.startTime;
-    this._active = false;
-  },
-
-  activateRoute(route) {
-    const startTime = t();
-    const r = {
-      name: route.routeName,
-      debugContainerKey: route._debugContainerKey,
-      startTime,
-      views: []
-    };
-    this.routes.push(r);
-    if (route.routeName.indexOf('loading') < 0 || !this._lastActivatedRoute) {
-      this._lastActivatedRoute = r;
-    }
-  },
-
-  routeFinishedSetup(route) {
-    const endTime = t();
-    const [r] = this.routes.filter(r => r.name === route.routeName);
-    r.endTime = endTime;
-    r.elapsedTime = r.endTime - r.startTime;
-  },
-
-  willRender(name, timestamp, payload) {
-    if (!this._active) {
-      return;
-    }
-
-    switch (name) {
-      case 'render.component':
-      case 'render.view':
-        const id = payload.view.elementId;
-        const startTime = t();
-        const v = {
-          startTime,
-          id,
-          containerKey: payload.view._debugContainerKey
-        };
-        const viewIdx = this.viewData.length;
-        this.viewData.push(v);
-
-        if (payload.view.parentView) {
-          v.parentViewId = payload.view.parentView.elementId;
-        }
-        this._lastActivatedRoute.views.push(viewIdx);
-        break;
-    }
-  },
-
-  didRender(name, timestamp, payload) {
-    if (!this._active) {
-      return;
-    }
-
-    switch (name) {
-      case 'render.component':
-      case 'render.view':
-        const [viewData] = this.viewData.filter(v => {
-          return payload.view.elementId === v.id;
-        });
-        viewData.endTime = t();
-        viewData.elapsedTime = viewData.endTime - viewData.startTime;
-        break;
-    }
+prototype.activateRoute = function activateRoute(route) {
+  const startTime = t();
+  const r = {
+    name: route.routeName,
+    debugContainerKey: route._debugContainerKey,
+    startTime,
+    views: []
+  };
+  this.routes.push(r);
+  if (route.routeName.indexOf('loading') < 0 || !this._lastActivatedRoute) {
+    this._lastActivatedRoute = r;
   }
+};
+
+prototype.routeFinishedSetup = function routeFinishedSetup(route) {
+  const endTime = t();
+  const [r] = this.routes.filter(r => r.name === route.routeName);
+  r.endTime = endTime;
+  r.elapsedTime = r.endTime - r.startTime;
+};
+
+prototype._viewAdded = function _viewAdded(view, index) {
+  this._lastActivatedRoute.views.push(index);
 };
 
 export default TransitionData;
