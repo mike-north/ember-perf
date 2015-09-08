@@ -79,7 +79,7 @@ export default Base.extend(Evented, {
   },
 
   /**
-   * Hook that's called whenever a route is deactivated
+   * Hook that's called whenever a route is beginning to render (after all setup has completed).
    * @param  {Ember.Route} route
    * @public
    */
