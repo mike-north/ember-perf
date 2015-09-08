@@ -14,5 +14,11 @@ export default Ember.Route.extend({
       });
     }
     // jscs: enable
+  },
+
+  setupController(controller) {
+    this._super(...arguments);
+
+    controller.set('editing', false);
   }
 });

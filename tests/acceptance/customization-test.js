@@ -59,3 +59,28 @@ test('Initial load, then pivoting on a parent', function(assert) {
   });
 
 });
+
+test('Initial load, then toggling additional views', function(assert) {
+  let transitionData;
+  let dataCount = 0;
+  let viewsCountWhenEventFired = 0;
+  application.perfService.on('transitionComplete', (data) => {
+    dataCount++;
+    transitionData = data;
+    viewsCountWhenEventFired = data.viewData.length;
+  });
+
+  visit('/company/1/building/2');
+
+  andThen(function() {
+    assert.equal(dataCount, 1, 'Only one event has been fired for the initial load');
+    assert.equal(currentURL(), '/company/1/building/2');
+  });
+
+  click('.btn-edit');
+
+  andThen(function() {
+    assert.equal(dataCount, 1, 'only a single transitionComplete event was fired');
+    assert.equal(transitionData.viewData.length, viewsCountWhenEventFired, 'transitionData should not be mutated');
+  });
+});
