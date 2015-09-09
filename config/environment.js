@@ -5,6 +5,7 @@ module.exports = function(/* environment, appConfig */) {
   	emberPerf: {
   		debugMode: false,
   		logRerenders: true,
+  		logViewEvents: true,
   		injectionFactories: ['route', 'adapter']
   	}
   };
