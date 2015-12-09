@@ -37,7 +37,7 @@ prototype.activateRoute = function activateRoute(route) {
 
 prototype.routeFinishedSetup = function routeFinishedSetup(route) {
   const endTime = t();
-  const [r] = this.routes.filter(r => r.name === route.routeName);
+  const [r] = this.routes.filter((r) => r.name === route.routeName);
   r.endTime = endTime;
   r.elapsedTime = r.endTime - r.startTime;
 };
