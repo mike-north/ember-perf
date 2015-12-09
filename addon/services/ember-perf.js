@@ -26,7 +26,7 @@ export default Base.extend(Evented, {
 
   _setDefaults() {
     const defaults = Ember.getWithDefault(this, 'defaults', {});
-    keys(defaults).map(key => {
+    keys(defaults).map((key) => {
       const classifiedKey = classify(key);
       const defaultKey = `default${classifiedKey}`;
       return Ember.set(this, defaultKey, defaults[key]);
