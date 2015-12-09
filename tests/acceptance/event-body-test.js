@@ -22,7 +22,7 @@ test('Initial load, then drilling in', function(assert) {
   let datas = [];
   let testStartTime = performanceNow();
 
-  application.perfService.on('transitionComplete', data => {
+  application.perfService.on('transitionComplete', (data) => {
     datas.push(data);
   });
 
@@ -44,7 +44,7 @@ test('Initial load, then drilling in, then back out', function(assert) {
   let datas = [];
   let testStartTime = performanceNow();
 
-  application.perfService.on('transitionComplete', data => {
+  application.perfService.on('transitionComplete', (data) => {
     datas.push(data);
   });
 
@@ -80,7 +80,7 @@ test('Initial load, then drilling in, then pivoting', function(assert) {
   let datas = [];
   let testStartTime = performanceNow();
 
-  application.perfService.on('transitionComplete', data => {
+  application.perfService.on('transitionComplete', (data) => {
     datas.push(data);
   });
 
@@ -116,7 +116,7 @@ test('Initial measureRender', function(assert) {
   let datas = [];
   let testStartTime = performanceNow();
 
-  application.perfService.on('renderComplete', data => {
+  application.perfService.on('renderComplete', (data) => {
     datas.push(data);
   });
 

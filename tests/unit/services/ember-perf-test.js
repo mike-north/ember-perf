@@ -17,7 +17,7 @@ test('measureRender starts a timer and schedules ending a timer in the afterRend
   // start a run loop manually
   run.begin();
 
-  service.on('renderComplete', data => {
+  service.on('renderComplete', (data) => {
     result = data;
   });
 

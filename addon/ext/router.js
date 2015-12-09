@@ -1,11 +1,12 @@
 import Ember from 'ember';
+import getOwner from 'ember-getowner-polyfill';
 
 const { computed, on, Mixin } = Ember;
 
 export default Mixin.create({
 
   perfService: computed(function() {
-    return this.container.lookup('service:ember-perf');
+    return getOwner(this).lookup('service:ember-perf');
   }),
 
   _doURLTransition() {

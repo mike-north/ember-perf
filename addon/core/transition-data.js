@@ -22,8 +22,8 @@ prototype.constructor = TransitionData;
 prototype._super$constructor = RenderData;
 
 prototype.activateRoute = function activateRoute(route) {
-  const startTime = t();
-  const r = {
+  let startTime = t();
+  let r = {
     name: route.routeName,
     debugContainerKey: route._debugContainerKey,
     startTime,
@@ -36,8 +36,8 @@ prototype.activateRoute = function activateRoute(route) {
 };
 
 prototype.routeFinishedSetup = function routeFinishedSetup(route) {
-  const endTime = t();
-  const [r] = this.routes.filter(r => r.name === route.routeName);
+  let endTime = t();
+  let [r] = this.routes.filter((r) => r.name === route.routeName);
   r.endTime = endTime;
   r.elapsedTime = r.endTime - r.startTime;
 };

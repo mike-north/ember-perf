@@ -1,25 +1,13 @@
 ---
 language: node_js
 node_js:
-  - "0.12"
+  - "4"
 
 sudo: false
 
 cache:
   directories:
     - node_modules
-
-env:
-  # - EMBER_TRY_SCENARIO=ember-1.6
-  # - EMBER_TRY_SCENARIO=ember-1.7
-  # - EMBER_TRY_SCENARIO=ember-1.8
-  #- EMBER_TRY_SCENARIO=ember-1.10
-  - EMBER_TRY_SCENARIO=ember-1.11
-  - EMBER_TRY_SCENARIO=ember-1.12
-  - EMBER_TRY_SCENARIO=ember-1.13
-  - EMBER_TRY_SCENARIO=ember-release
-  - ALLOW_DEPRECATIONS=true EMBER_TRY_SCENARIO=ember-beta
-  - ALLOW_DEPRECATIONS=true EMBER_TRY_SCENARIO=ember-canary
 
 matrix:
   fast_finish: true
@@ -36,13 +24,12 @@ before_install:
   - "npm install -g npm@^2"
 
 install:
-  - node lib/setup-packagejson.js
   - npm install -g bower
   - npm install
   - bower install
 
 script:
-  - npm run tryver $EMBER_TRY_SCENARIO --skip-cleanup
+  - npm test
 
 after_success:
 # Remove the downloaded copy of phantomJS
