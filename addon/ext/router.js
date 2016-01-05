@@ -25,6 +25,9 @@ export default Mixin.create({
   },
 
   _transitionStartListener: on('_emberPerfWillTransition', function(transitionInfo) {
-    this._beginPerfDataCollection(transitionInfo);
+    const existingTransitionData = this.get("perfService").transitionData;
+    if (!existingTransitionData || transitionInfo.promise.targetName !== existingTransitionData.destRoute) {
+      this._beginPerfDataCollection(transitionInfo);
+    }
   })
 });
