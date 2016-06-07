@@ -25,10 +25,10 @@ export default Base.extend(Evented, {
   },
 
   _setDefaults() {
-    const defaults = Ember.getWithDefault(this, 'defaults', {});
+    let defaults = Ember.getWithDefault(this, 'defaults', {});
     keys(defaults).map((key) => {
-      const classifiedKey = classify(key);
-      const defaultKey = `default${classifiedKey}`;
+      let classifiedKey = classify(key);
+      let defaultKey = `default${classifiedKey}`;
       return Ember.set(this, defaultKey, defaults[key]);
     });
   },
@@ -61,7 +61,7 @@ export default Base.extend(Evented, {
     });
     transitionInfo.promise.then(() => {
       this.transitionData.finish();
-      const event = this.transitionData;
+      let event = this.transitionData;
       Ember.run.scheduleOnce('afterRender', () => {
         this.trigger('transitionComplete', event);
       });
@@ -82,7 +82,7 @@ export default Base.extend(Evented, {
     this.renderData = new RenderData();
 
     Ember.run.schedule('afterRender', () => {
-      const event = this.renderData;
+      let event = this.renderData;
       event.finish();
 
       this.trigger('renderComplete', event);
@@ -140,7 +140,7 @@ export default Base.extend(Evented, {
         console.group(`${data.routes[i].name} ${data.routes[i].elapsedTime}ms`);
         if (data.routes[i].views) {
           for (let j = 0; j < (data.routes[i].views || []).length; j++) {
-            const v = data.viewData[data.routes[i].views[j]];
+            let v = data.viewData[data.routes[i].views[j]];
             console.log(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
           }
         }
@@ -154,7 +154,7 @@ export default Base.extend(Evented, {
     if (this.get('debugMode')) {
       console.group(`Render Completed: ${data.elapsedTime}ms`);
       for (let i = 0; i < data.viewData.length; i++) {
-        const v = data.viewData[i];
+        let v = data.viewData[i];
         console.log(`${v.containerKey} (${v.id}): ${v.elapsedTime}ms`);
       }
       console.groupEnd();

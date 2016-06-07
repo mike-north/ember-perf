@@ -29,14 +29,14 @@ RenderData.prototype = {
     switch (name) {
       case 'render.component':
       case 'render.view':
-        const id = payload.view.elementId;
-        const startTime = t();
-        const v = {
+        let id = payload.view.elementId;
+        let startTime = t();
+        let v = {
           startTime,
           id,
           containerKey: payload.view._debugContainerKey
         };
-        const viewIdx = this.viewData.length;
+        let viewIdx = this.viewData.length;
         this.viewData.push(v);
 
         if (payload.view.parentView) {
@@ -56,7 +56,7 @@ RenderData.prototype = {
     switch (name) {
       case 'render.component':
       case 'render.view':
-        const [viewData] = this.viewData.filter((v) => {
+        let [viewData] = this.viewData.filter((v) => {
           return payload.view.elementId === v.id;
         });
         viewData.endTime = t();

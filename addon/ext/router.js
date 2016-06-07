@@ -10,13 +10,13 @@ export default Mixin.create({
   }),
 
   _doURLTransition() {
-    const promise = this._super(...arguments);
+    let promise = this._super(...arguments);
     this.trigger('_emberPerfWillTransition', { promise });
     return promise;
   },
 
   _doTransition() {
-    const promise = this._super(...arguments);
+    let promise = this._super(...arguments);
     this.trigger('_emberPerfWillTransition', { promise });
     return promise;
   },
