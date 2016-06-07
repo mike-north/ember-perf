@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
 
   actions: {
     edit() {
-      const emberPerf = this.get('emberPerf');
+      let emberPerf = this.get('emberPerf');
 
       emberPerf.measureRender();
 
