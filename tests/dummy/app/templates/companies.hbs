@@ -1,3 +1,7 @@
-{{view 'items-list' class='companies-list' content=content itemClass='company' itemRoute='company'}}
+<ul class='companies-list'>
+  {{#each model as |company|}}
+    {{items-list-item  class='company' content=company itemRoute='company'}}
+  {{/each}}
+</ul>
 
 {{outlet}}

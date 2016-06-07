@@ -29,7 +29,7 @@ test('Initial load, then drilling in', function(assert) {
     assert.equal(currentURL(), '/company/1/buildings');
   });
 
-  click('ul.buildings-list li:first-child a');
+  click('ul.buildings-list .building-id:first-child a');
 
   andThen(function() {
     assert.equal(dataCount, 2, 'Only one event has been fired for a drill-in');
@@ -51,7 +51,7 @@ test('Initial load, then pivoting on a parent', function(assert) {
     assert.equal(currentURL(), '/company/1/building/2');
   });
 
-  click('ul.building-ids-list li:first-child a');
+  click('ul.buildings-list .building-id:first-child a');
 
   andThen(function() {
     assert.equal(currentURL(), '/company/1/building/1');

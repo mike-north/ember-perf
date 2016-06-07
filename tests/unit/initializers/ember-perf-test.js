@@ -15,7 +15,7 @@ module('Unit | Initializer | ember perf', {
 });
 
 // Replace this with your real tests.
-test('it works', assert => {
+test('it works', (assert) => {
   initialize(registry, application);
 
   // you would normally confirm the results of the initializer here

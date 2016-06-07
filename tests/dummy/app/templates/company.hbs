@@ -5,7 +5,11 @@
 </p>
 <h2>{{content.name}}</h2>
 <p>
-  {{view 'items-list' class='building-ids-list horiz-list' content=content.buildingIds itemClass='building-id' itemRoute='company.building'}}
+  <ul class='buildings-list horiz-list'>
+    {{#each content.buildingIds as |buildingId|}}
+      {{items-list-item content=buildingId class='building-id' itemRoute='company.building'}}
+    {{/each}}
+  </ul>
 </p>
 
 {{outlet}}

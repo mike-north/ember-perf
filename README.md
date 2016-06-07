@@ -7,17 +7,15 @@
 
 Package | Ember Versions | Version | Status
 --------|----------------|---------|--------
-`ember-perf` | `1.10`, `1.11`, `1.12`, `1.13` | [![npm version](https://badge.fury.io/js/ember-perf.svg)](http://badge.fury.io/js/ember-perf) | [![Build Status](https://travis-ci.org/mike-north/ember-perf.svg?branch=master)](https://travis-ci.org/mike-north/ember-perf)
-`ember-perf-handlebars` | `1.5`, `1.6`, `1.7`, `1.8`, `1.9` |  [![npm version](https://badge.fury.io/js/ember-perf-handlebars.svg)](http://badge.fury.io/js/ember-perf-handlebars) | [![Build Status](https://travis-ci.org/mike-north/ember-perf.svg?branch=handlebars)](https://travis-ci.org/mike-north/ember-perf)
+`ember-perf` | `1.11`, `1.12`, `1.13`, `2.0`, `2.1`, `2.2`, ~~`2.3*`~~, `2.4`, `2.5` | [![npm version](https://badge.fury.io/js/ember-perf.svg)](http://badge.fury.io/js/ember-perf) | [![Build Status](https://travis-ci.org/mike-north/ember-perf.svg?branch=master)](https://travis-ci.org/mike-north/ember-perf)
+
 
 Page load performance instrumentation for ember.js apps
 
 ## Setup
 
 ```sh
-# Ember.js < 1.10
-ember install ember-perf-handlebars
-# Ember.js >= 1.10
+# Ember.js >= 1.11
 ember install ember-perf
 ```
 
@@ -126,7 +124,6 @@ Here's an example
 }
 ```
 
-
 ### Configuration
 
 This addon can be configured in your **config/environment.js** file
@@ -145,6 +142,8 @@ if (environment === 'development') {
 
 ![TransitionPerformance](http://i60.tinypic.com/2dtvfwz.png)
 
+### Warning
+\*Ember 2.3 doesn't work with `ember-perf`.
 
 ## Developer Installation
 
@@ -153,14 +152,23 @@ if (environment === 'development') {
 * `bower install`
 
 ## Running
-
-* `npm run tryver <EMBER_TRY_SCENARIO> s` (for example, `npm run tryver ember-1.8 s`)
-* Visit your app at http://localhost:4200.
+Running the app using an ember-try scenario
+* `ember try:one <EMBER_TRY_SCENARIO> --- ember serve` ( for example `ember try:one ember-2.4 --- ember serve`)
+* Visit the app at http://localhost:4200.
 
 ## Running Tests
 
-* `npm run tryver <EMBER_TRY_SCENARIO>` (for example, `npm run tryver ember-1.8`)
-* `npm run tryver <EMBER_TRY_SCENARIO> test --server` (for example, `npm run tryver ember-1.8 test --server`)
+#### All Supported Ember Versions
+* `npm test`
+
+#### Individual Ember Versions
+* `ember try:one <EMBER_TRY_SCENARIO>` (for example, `ember try:one ember-2.4`)
+* `ember try:one <EMBER_TRY_SCENARIO> --- ember test --server` (for example, `ember try:one ember-2.4 --- ember test --server`)
+
+#### Reset Dependencies
+* `ember try:reset`
+
+This command restores the original bower.json from bower.json.ember-try, rm -rfs bower_components and runs bower install. For use if any of the other commands fail to clean up after (they run this by default on completion).
 
 ## Building
 

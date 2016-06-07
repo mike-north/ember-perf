@@ -56,7 +56,7 @@ RenderData.prototype = {
     switch (name) {
       case 'render.component':
       case 'render.view':
-        const [viewData] = this.viewData.filter(v => {
+        const [viewData] = this.viewData.filter((v) => {
           return payload.view.elementId === v.id;
         });
         viewData.endTime = t();
