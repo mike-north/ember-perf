@@ -8,17 +8,17 @@ import Ember from 'ember';
 // but is not in widespread use yet.
 export function initialize(instance) {
   // in 2.1 the ApplicationInstance instance has a public `lookup` method
-  const container = instance.lookup ? instance : instance.container;
+  let container = instance.lookup ? instance : instance.container;
 
   // in 2.1 the ApplicationInstance uses `_lookupFactory` to avoid making lookupFactory public
   // along with `lookup`
-  const config = container._lookupFactory ? container._lookupFactory('config:environment') : container.lookupFactory('service:ember-perf');
-  const emberPerfConfig = config.emberPerfConfig || {};
+  let config = container._lookupFactory ? container._lookupFactory('config:environment') : container.lookupFactory('service:ember-perf');
+  let emberPerfConfig = config.emberPerfConfig || {};
 
   let shouldSubscribeToViewEvents = 'logViewEvents' in emberPerfConfig ? emberPerfConfig.logViewEvents : true;
 
   if (shouldSubscribeToViewEvents) {
-    const emberPerf = container.lookup('service:ember-perf');
+    let emberPerf = container.lookup('service:ember-perf');
 
     Ember.subscribe('render', {
       before(name, timestamp, payload) {

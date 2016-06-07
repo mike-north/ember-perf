@@ -4,7 +4,7 @@ import { BUILDINGS } from '../../utils/sample-data';
 
 export default Ember.Route.extend({
   model(params) {
-    const buildingIds = Ember.get(this.modelFor('company'), 'buildings');
+    let buildingIds = Ember.get(this.modelFor('company'), 'buildings');
     // jscs: disable
     if (buildingIds.indexOf(parseInt(params.building_id, 10)) < 0) {
       return null;
