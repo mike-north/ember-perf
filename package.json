@@ -45,7 +45,15 @@
     "rsvp": "^3.0.20"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "performance",
+    "instrumentation",
+    "load",
+    "analytics",
+    "perf",
+    "metric",
+    "render",
+    "measure"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.6",
