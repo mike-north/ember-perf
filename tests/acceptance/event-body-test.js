@@ -4,6 +4,8 @@ import startApp from '../../tests/helpers/start-app';
 import validateEvent from '../../tests/helpers/validate-event';
 import performanceNow from 'ember-perf/utils/performance-now';
 
+const { run } = Ember;
+
 let application;
 
 module('Acceptance | event data structure', {
@@ -13,7 +15,7 @@ module('Acceptance | event data structure', {
   },
 
   afterEach() {
-    Ember.run(application, 'destroy');
+    run(application, 'destroy');
     application = null;
   }
 });

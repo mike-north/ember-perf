@@ -2,6 +2,8 @@ import Ember from 'ember';
 import { module, test } from 'qunit';
 import startApp from '../../tests/helpers/start-app';
 
+const { run } = Ember;
+
 let application;
 
 module('Acceptance | perf event firing scenarios', {
@@ -11,7 +13,7 @@ module('Acceptance | perf event firing scenarios', {
   },
 
   afterEach() {
-    Ember.run(application, 'destroy');
+    run(application, 'destroy');
     application = null;
   }
 });

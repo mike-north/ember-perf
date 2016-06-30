@@ -1,11 +1,13 @@
 import Ember from 'ember';
 import config from './config/environment';
 
-const Router = Ember.Router.extend({
+const { Router } = Ember;
+
+const r = Router.extend({
   location: config.locationType
 });
 
-Router.map(function() {
+r.map(function() {
   this.route('companies', function() {
     this.route('info');
   });
@@ -18,4 +20,4 @@ Router.map(function() {
   });
 });
 
-export default Router;
+export default r;
