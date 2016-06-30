@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const { subscribe } = Ember;
+
 // this lives in addon/ because when running on Ember < 1.12
 // the ember-load-initializers project will attempt to call
 // `Ember.Application#instanceInitializer` which does not exist.
@@ -20,7 +22,7 @@ export function initialize(instance) {
   if (shouldSubscribeToViewEvents) {
     let emberPerf = container.lookup('service:ember-perf');
 
-    Ember.subscribe('render', {
+    subscribe('render', {
       before(name, timestamp, payload) {
         emberPerf.renderBefore(name, timestamp, payload);
       },

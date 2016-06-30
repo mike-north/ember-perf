@@ -2,9 +2,28 @@ import Ember from 'ember';
 import TransitionData from '../core/transition-data';
 import RenderData from '../core/render-data';
 
-const { Evented, assert, String: { classify }, computed: { oneWay }, RSVP: { defer } } = Ember;
+// jscs:disable disallowDirectPropertyAccess
+const {
+  Evented,
+  assert,
+  String: {
+    classify
+  },
+  computed: {
+    oneWay
+  },
+  RSVP: {
+    defer
+  },
+  run: { scheduleOnce, schedule },
+  getWithDefault, get, set, on
+} = Ember;
 const Base = Ember.Service || Ember.Object;
-const { keys } = Object;
+const {
+  keys
+} = Object;
+
+// jscs:enable disallowDirectPropertyAccess
 
 let transitionCounter = 0;
 
@@ -25,11 +44,11 @@ export default Base.extend(Evented, {
   },
 
   _setDefaults() {
-    let defaults = Ember.getWithDefault(this, 'defaults', {});
+    let defaults = getWithDefault(this, 'defaults', {});
     keys(defaults).map((key) => {
       let classifiedKey = classify(key);
       let defaultKey = `default${classifiedKey}`;
-      return Ember.set(this, defaultKey, defaults[key]);
+      return set(this, defaultKey, defaults[key]);
     });
   },
 
@@ -43,10 +62,10 @@ export default Base.extend(Evented, {
       return;
     }
     transitionInfo.promise._emberPerfTransitionId = transitionCounter++;
-    let transitionRoute = transitionInfo.promise.targetName || Ember.get(transitionInfo.promise, 'intent.name');
-    let transitionCtxt = Ember.get(transitionInfo.promise, 'intent.contexts') ? (Ember.get(transitionInfo.promise, 'intent.contexts') || [])[0] : null;
-    let transitionUrl = Ember.get(transitionInfo.promise, 'intent.url');
-    Ember.assert('Must have at least a route name', transitionRoute);
+    let transitionRoute = transitionInfo.promise.targetName || get(transitionInfo.promise, 'intent.name');
+    let transitionCtxt = get(transitionInfo.promise, 'intent.contexts') ? (get(transitionInfo.promise, 'intent.contexts') || [])[0] : null;
+    let transitionUrl = get(transitionInfo.promise, 'intent.url');
+    assert('Must have at least a route name', transitionRoute);
 
     if (!transitionUrl) {
       if (transitionCtxt) {
@@ -62,7 +81,7 @@ export default Base.extend(Evented, {
     transitionInfo.promise.then(() => {
       this.transitionData.finish();
       let event = this.transitionData;
-      Ember.run.scheduleOnce('afterRender', () => {
+      scheduleOnce('afterRender', () => {
         this.trigger('transitionComplete', event);
       });
     });
@@ -81,7 +100,7 @@ export default Base.extend(Evented, {
 
     this.renderData = new RenderData();
 
-    Ember.run.schedule('afterRender', () => {
+    schedule('afterRender', () => {
       let event = this.renderData;
       event.finish();
 
@@ -133,7 +152,7 @@ export default Base.extend(Evented, {
     this.debugLog(`view did render - ${(payload.view || {})._debugContainerKey}`);
   },
 
-  transitionLogger: Ember.on('transitionComplete', function(data) {
+  transitionLogger: on('transitionComplete', function(data) {
     if (this.get('debugMode')) {
       console.group(`Top-Level Transition to ${data.destRoute} (${data.destURL}): ${data.elapsedTime}ms`);
       for (let i = 0; i < data.routes.length; i++) {
@@ -150,7 +169,7 @@ export default Base.extend(Evented, {
     }
   }),
 
-  renderLogger: Ember.on('renderComplete', function(data) {
+  renderLogger: on('renderComplete', function(data) {
     if (this.get('debugMode')) {
       console.group(`Render Completed: ${data.elapsedTime}ms`);
       for (let i = 0; i < data.viewData.length; i++) {

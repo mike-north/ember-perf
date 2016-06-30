@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  emberPerf: Ember.inject.service(),
+const { inject, Controller } = Ember;
+
+export default Controller.extend({
+  emberPerf: inject.service(),
 
   editing: false,
 

@@ -2,12 +2,14 @@ import Ember from 'ember';
 import { initialize } from '../../../initializers/ember-perf';
 import { module, test } from 'qunit';
 
+const { run, Application } = Ember;
+
 let registry, application;
 
 module('Unit | Initializer | ember perf', {
   beforeEach() {
-    Ember.run(function() {
-      application = Ember.Application.create();
+    run(function() {
+      application = Application.create();
       registry = application.registry;
       application.deferReadiness();
     });
