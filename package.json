@@ -1,6 +1,6 @@
 {
   "name": "ember-perf",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Performance instrumentation for ember.js apps",
   "directories": {
     "doc": "doc",
