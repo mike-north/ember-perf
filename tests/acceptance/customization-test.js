@@ -20,6 +20,7 @@ module('Acceptance | perf event firing scenarios', {
 
 test('Initial load, then drilling in', function(assert) {
   let dataCount = 0;
+
   application.perfService.on('transitionComplete', () => {
     dataCount++;
   });
