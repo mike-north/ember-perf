@@ -1,12 +1,12 @@
 {{#if content}}
-{{link-to '< Back to company' 'company' content.companyId class='back-to-company'}}
-<h4>Building: {{content.name}}</h4>
+  {{link-to '< Back to company' 'company' content.companyId class='back-to-company'}}
+  <h4>Building: {{content.name}}</h4>
 {{else}}
-<h1>Building not found</h1>
+  <h1>Building not found</h1>
 {{/if}}
 
 {{#if editing}}
-    {{input value=content.name}}
+  {{input value=content.name}}
 {{else}}
   <button {{action 'edit'}} class="btn-edit">Show more</button>
 {{/if}}
