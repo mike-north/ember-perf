@@ -9,7 +9,9 @@
   "scripts": {
     "start": "ember server",
     "build": "ember build",
-    "test": "ember try:each"
+    "test": "ember try:each",
+    "publish:patch": "npm whoami && npm version patch && git push origin --tags && npm publish",
+    "publish:minor": "npm whoami && npm version minor && git push origin --tags && npm publish"
   },
   "repository": "https://github.com/mike-north/ember-perf.git",
   "engines": {
