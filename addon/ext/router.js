@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import getOwner from 'ember-getowner-polyfill';
 
-const { computed, on, Mixin } = Ember;
+const { computed, on, Mixin, getOwner } = Ember;
 
 export default Mixin.create({
 
