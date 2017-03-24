@@ -65,8 +65,10 @@ export default Base.extend(Evented, {
     let transitionRoute = transitionInfo.promise.targetName || get(transitionInfo.promise, 'intent.name');
     let transitionCtxts = get(transitionInfo.promise, 'intent.contexts');
     let transitionUrl = get(transitionInfo.promise, 'intent.url');
-    assert('Must have at least a route name', transitionRoute);
 
+    if (Ember.isEmpty(transitionRoute)) {
+       return;
+    }
     if (!transitionUrl) {
       if (isEmpty(transitionCtxts)) {
         transitionUrl = transitionInfo.promise.router.generate(transitionRoute);
