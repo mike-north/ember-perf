@@ -24,16 +24,16 @@ function company(name, cb) {
 }
 
 company('Yahoo', function() {
-  this.building(`Yahoo - Building A`);
-  this.building(`Yahoo - Building B`);
-  this.building(`Yahoo - Building C`);
-  this.building(`Yahoo - Building D`);
+  this.building('Yahoo - Building A');
+  this.building('Yahoo - Building B');
+  this.building('Yahoo - Building C');
+  this.building('Yahoo - Building D');
 });
 
 company('Flurry', function() {
-  this.building(`Flurry HQ`);
+  this.building('Flurry HQ');
 });
 
 company('Tumblr', function() {
-  this.building(`Tumblr HQ`);
+  this.building('Tumblr HQ');
 });

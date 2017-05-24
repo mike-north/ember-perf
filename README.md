@@ -1,5 +1,7 @@
 # ember-perf
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mike-north/ember-perf.svg)](https://greenkeeper.io/)
+
 [![Ember Observer Score](http://emberobserver.com/badges/ember-perf.svg)](http://emberobserver.com/addons/ember-perf)
 [![Dependency Status](https://david-dm.org/mike-north/ember-perf.svg)](https://david-dm.org/mike-north/ember-perf)
 [![devDependency Status](https://david-dm.org/mike-north/ember-perf/dev-status.svg)](https://david-dm.org/mike-north/ember-perf#info=devDependencies)

@@ -3,9 +3,8 @@ import performanceNow from '../utils/performance-now';
 import RenderData from './render-data';
 
 // allow compatibility with IE8 via Ember's create polyfill
-// jscs:disable disallowDirectPropertyAccess
+// eslint-disable-next-line
 const create = Object.create || Ember.create;
-// jscs:enable disallowDirectPropertyAccess
 
 function TransitionData(args) {
   this._super$constructor(...arguments);
