@@ -29,7 +29,8 @@ module.exports = {
       npm: {
         devDependencies: {
           'ember-getowner-polyfill': '^1.0.0',
-          'ember-source': null
+          'ember-source': null,
+          'ember-cli-shims': null
         }
       }
     },
@@ -54,7 +55,9 @@ module.exports = {
       },
       npm: {
         devDependencies: {
-          'ember-source': null
+          'ember-getowner-polyfill': '^1.0.0',
+          'ember-source': null,
+          'ember-cli-shims': null
         }
       }
     },
@@ -79,7 +82,9 @@ module.exports = {
       },
       npm: {
         devDependencies: {
-          'ember-source': null
+          'ember-getowner-polyfill': '^1.0.0',
+          'ember-source': null,
+          'ember-cli-shims': null
         }
       }
     },
@@ -95,6 +100,7 @@ module.exports = {
       },
       npm: {
         devDependencies: {
+          'ember-getowner-polyfill': '^1.0.0',
           'ember-source': null
         }
       }
@@ -111,6 +117,7 @@ module.exports = {
       },
       npm: {
         devDependencies: {
+          'ember-getowner-polyfill': '^1.0.0',
           'ember-source': null
         }
       }
@@ -127,6 +134,7 @@ module.exports = {
       },
       npm: {
         devDependencies: {
+          'ember-getowner-polyfill': '^1.0.0',
           'ember-source': null
         }
       }
