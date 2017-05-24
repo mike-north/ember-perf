@@ -132,7 +132,7 @@ test('Initial measureRender', function(assert) {
 
   andThen(function() {
     assert.equal(datas.length, 1, 'Only one event fired');
-    let [ data ] = datas;
+    let [data] = datas;
     validateEvent(assert, testStartTime, data, 'render');
   });
 });

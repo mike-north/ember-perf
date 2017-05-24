@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 import Ember from 'ember';
 import TransitionData from '../core/transition-data';
 import RenderData from '../core/render-data';
@@ -18,7 +19,8 @@ const {
   run: { scheduleOnce, schedule },
   getWithDefault, get, set, on
 } = Ember;
-const Base = Ember.Service || Ember.Object;
+const { Object: EObj, Service, Logger } = Ember;
+const Base = Service || EObj;
 const {
   keys
 } = Object;
@@ -34,7 +36,7 @@ export default Base.extend(Evented, {
 
   debugLog() {
     if (this.get('debugMode')) {
-      console.log(...arguments);
+      Logger.log(...arguments);
     }
   },
 
@@ -96,7 +98,7 @@ export default Base.extend(Evented, {
   measureRender() {
     this.transitionData = null;
 
-    let deferred = defer(`measureRender`);
+    let deferred = defer('measureRender');
 
     this.renderData = new RenderData();
 

@@ -1,3 +1,4 @@
+/* eslint no-case-declarations: 0 */
 import performanceNow from '../utils/performance-now';
 
 function RenderData() {

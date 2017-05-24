@@ -10,7 +10,7 @@ test('measureRender starts a timer and schedules ending a timer in the afterRend
   assert.expect(9);
 
   let testStartTime = performanceNow();
-  let promise, result;
+  let result;
 
   let service = this.subject();
 
@@ -21,7 +21,7 @@ test('measureRender starts a timer and schedules ending a timer in the afterRend
     result = data;
   });
 
-  promise = service.measureRender();
+  service.measureRender();
 
   run.schedule('afterRender', () => {
     assert.ok(result, 'result should have been set prior to the next afterRender item');

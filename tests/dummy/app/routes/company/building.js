@@ -12,7 +12,7 @@ export default Route.extend({
       return null;
     } else {
       return randomWait(testing ? 4 : 2400, testing ? 2 : 300).then(() => {
-        return BUILDINGS.filter(b => `${b.id}` === params.building_id )[0];
+        return BUILDINGS.filter((b) => `${b.id}` === params.building_id)[0];
       });
     }
     // jscs: enable
