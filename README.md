@@ -9,7 +9,7 @@
 
 Package | Ember Versions | Version | Status
 --------|----------------|---------|--------
-`ember-perf` | `1.11`, `1.12`, `1.13`, `2.0`, `2.1`, `2.2`, ~~`2.3*`~~, `2.4`, `2.5`, `2.6`, `2.7`, `2.8`, `2.9`, `2.10` | [![npm version](https://badge.fury.io/js/ember-perf.svg)](http://badge.fury.io/js/ember-perf) | [![Build Status](https://travis-ci.org/mike-north/ember-perf.svg?branch=master)](https://travis-ci.org/mike-north/ember-perf)
+`ember-perf` | `1.11 - 1.13`, `2.4-lts`, `2.8-lts`, `2.12-lts`, `Release`, `Beta` | [![npm version](https://badge.fury.io/js/ember-perf.svg)](http://badge.fury.io/js/ember-perf) | [![Build Status](https://travis-ci.org/mike-north/ember-perf.svg?branch=master)](https://travis-ci.org/mike-north/ember-perf)
 
 
 Page load performance instrumentation for ember.js apps
