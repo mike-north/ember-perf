@@ -156,54 +156,6 @@ module.exports = {
       }
     },
     {
-      name: 'ember-2.5',
-      bower: {
-        dependencies: {
-          'ember': '~2.5.0'
-        },
-        resolutions: {
-          'ember': '~2.5.0'
-        }
-      },
-      npm: {
-        devDependencies: {
-          'ember-source': null
-        }
-      }
-    },
-    {
-      name: 'ember-2.6',
-      bower: {
-        dependencies: {
-          'ember': '~2.6.0'
-        },
-        resolutions: {
-          'ember': '~2.6.0'
-        }
-      },
-      npm: {
-        devDependencies: {
-          'ember-source': null
-        }
-      }
-    },
-    {
-      name: 'ember-2.7',
-      bower: {
-        dependencies: {
-          'ember': '~2.7.0'
-        },
-        resolutions: {
-          'ember': '~2.7.0'
-        }
-      },
-      npm: {
-        devDependencies: {
-          'ember-source': null
-        }
-      }
-    },
-    {
       name: 'ember-lts-2.8',
       bower: {
         dependencies: {
@@ -220,29 +172,13 @@ module.exports = {
       }
     },
     {
-      name: 'ember-2.9',
+      name: 'ember-lts-2.12',
       bower: {
         dependencies: {
-          'ember': '~2.9.0'
+          'ember': 'components/ember#lts-2-12'
         },
         resolutions: {
-          'ember': '~2.9.0'
-        }
-      },
-      npm: {
-        devDependencies: {
-          'ember-source': null
-        }
-      }
-    },
-    {
-      name: 'ember-2.10',
-      bower: {
-        dependencies: {
-          'ember': '~2.10.0'
-        },
-        resolutions: {
-          'ember': '~2.10.0'
+          'ember': 'lts-2.12'
         }
       },
       npm: {
