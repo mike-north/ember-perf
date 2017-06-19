@@ -16,14 +16,14 @@ export default function(assert, now, data, eventType = 'transition') {
     assert.equal(typeOf(data.routes), 'array', 'data.routes is an array');
     assert.deepEqual(data.routes.map((r) => r.name), ['application', 'loading', 'company', 'company.loading', 'company.buildings'], 'Proper routes load');
     assert.equal(data.routes
-                 .map((r) => r.startTime)
-                 .filter((x) => typeOf(x) !== 'number'), 0, 'All route startTimes are numbers');
+      .map((r) => r.startTime)
+      .filter((x) => typeOf(x) !== 'number'), 0, 'All route startTimes are numbers');
     assert.equal(data.routes
-                 .map((r) => r.endTime)
-                 .filter((x) => typeOf(x) !== 'number'), 0, 'All route endTimes are numbers');
+      .map((r) => r.endTime)
+      .filter((x) => typeOf(x) !== 'number'), 0, 'All route endTimes are numbers');
     assert.equal(data.routes
-                 .map((r) => r.elapsedTime)
-                 .filter((x) => typeOf(x) !== 'number' && x >= 0), 0, 'All route elapsedTime are numbers > 0');
+      .map((r) => r.elapsedTime)
+      .filter((x) => typeOf(x) !== 'number' && x >= 0), 0, 'All route elapsedTime are numbers > 0');
   }
 
 }
