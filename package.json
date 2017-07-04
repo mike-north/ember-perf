@@ -43,7 +43,7 @@
     "ember-source": "^2.13.2",
     "eslint-plugin-ember-suave": "^1.0.0",
     "loader.js": "^4.1.0",
-    "rsvp": "^3.3.3"
+    "rsvp": "^4.6.1"
   },
   "keywords": [
     "ember-addon",
