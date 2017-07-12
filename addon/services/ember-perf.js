@@ -17,7 +17,7 @@ const {
     defer
   },
   run: { scheduleOnce, schedule },
-  getWithDefault, get, set, on
+  getWithDefault, get, set, on, isEmpty
 } = Ember;
 const { Object: EObj, Service, Logger } = Ember;
 const Base = Service || EObj;
@@ -65,15 +65,17 @@ export default Base.extend(Evented, {
     }
     transitionInfo.promise._emberPerfTransitionId = transitionCounter++;
     let transitionRoute = transitionInfo.promise.targetName || get(transitionInfo.promise, 'intent.name');
-    let transitionCtxt = get(transitionInfo.promise, 'intent.contexts') ? (get(transitionInfo.promise, 'intent.contexts') || [])[0] : null;
+    let transitionCtxts = get(transitionInfo.promise, 'intent.contexts');
     let transitionUrl = get(transitionInfo.promise, 'intent.url');
-    assert('Must have at least a route name', transitionRoute);
 
+    if (Ember.isEmpty(transitionRoute)) {
+       return;
+    }
     if (!transitionUrl) {
-      if (transitionCtxt) {
-        transitionUrl = transitionInfo.promise.router.generate(transitionRoute, transitionCtxt);
-      } else {
+      if (isEmpty(transitionCtxts)) {
         transitionUrl = transitionInfo.promise.router.generate(transitionRoute);
+      } else {
+        transitionUrl = transitionInfo.promise.router.generate(transitionRoute, transitionCtxts);
       }
     }
     this.renderData = this.transitionData = new TransitionData({
@@ -81,10 +83,13 @@ export default Base.extend(Evented, {
       destRoute: transitionRoute
     });
     transitionInfo.promise.then(() => {
-      this.transitionData.finish();
+    }).catch(() => {
+    }).finally(() => {
       let event = this.transitionData;
+
       scheduleOnce('afterRender', () => {
         this.trigger('transitionComplete', event);
+        this.transitionData.finish();
       });
     });
   },

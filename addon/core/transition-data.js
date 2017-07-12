@@ -39,12 +39,17 @@ prototype.activateRoute = function activateRoute(route) {
 prototype.routeFinishedSetup = function routeFinishedSetup(route) {
   let endTime = t();
   let [r] = this.routes.filter((r) => r.name === route.routeName);
-  r.endTime = endTime;
-  r.elapsedTime = r.endTime - r.startTime;
+
+  if (r) {
+    r.endTime = endTime;
+    r.elapsedTime = r.endTime - r.startTime;
+  }
 };
 
 prototype._viewAdded = function _viewAdded(view, index) {
-  this._lastActivatedRoute.views.push(index);
+  if (this._lastActivatedRoute && this._lastActivatedRoute.views) {
+    this._lastActivatedRoute.views.push(index);
+  }
 };
 
 export default TransitionData;
