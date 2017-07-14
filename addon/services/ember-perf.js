@@ -65,13 +65,14 @@ export default Base.extend(Evented, {
     }
     transitionInfo.promise._emberPerfTransitionId = transitionCounter++;
     let transitionRoute = transitionInfo.promise.targetName || get(transitionInfo.promise, 'intent.name');
-    let transitionCtxt = get(transitionInfo.promise, 'intent.contexts') ? (get(transitionInfo.promise, 'intent.contexts') || [])[0] : null;
+    let transitionCtxt = get(transitionInfo.promise, 'intent.contexts');
+    let hasTransitionCtxt = transitionCtxt && transitionCtxt[0];
     let transitionUrl = get(transitionInfo.promise, 'intent.url');
     assert('Must have at least a route name', transitionRoute);
 
     if (!transitionUrl) {
-      if (transitionCtxt) {
-        transitionUrl = transitionInfo.promise.router.generate(transitionRoute, transitionCtxt);
+      if (hasTransitionCtxt) {
+        transitionUrl = transitionInfo.promise.router.generate(transitionRoute, ...transitionCtxt);
       } else {
         transitionUrl = transitionInfo.promise.router.generate(transitionRoute);
       }
