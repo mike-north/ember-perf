@@ -42,6 +42,29 @@ test('Initial load, then drilling in', function(assert) {
 
 });
 
+test('More than one route context object', function(assert) {
+  let datas = [];
+
+  application.perfService.on('transitionComplete', (data) => {
+    datas.push(data);
+  });
+
+  visit('/companies');
+
+  andThen(function() {
+    assert.ok(datas, 'Data is present');
+    assert.equal(datas.length, 1, 'Only one event fired');
+  });
+
+  click('a[href=\'/company/1/building/1\']');
+  andThen(function() {
+    assert.equal(datas.length, 2, 'Only two events fired');
+    let data = datas[datas.length - 1];
+    assert.equal(data.destURL, '/company/1/building/1', 'Intent URL is correct');
+    assert.equal(data.destRoute, 'company.building.index', 'Intent route is correct');
+  });
+});
+
 test('Initial load, then drilling in, then back out', function(assert) {
   let datas = [];
   let testStartTime = performanceNow();
