@@ -54,6 +54,7 @@ test('More than one route context object', function(assert) {
   andThen(function() {
     assert.ok(datas, 'Data is present');
     assert.equal(datas.length, 1, 'Only one event fired');
+    // don't validate event contents because validateEvent assumes a building route
   });
 
   click('a[href=\'/company/1/building/1\']');
