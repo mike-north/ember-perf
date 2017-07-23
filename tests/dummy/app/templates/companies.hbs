@@ -1,6 +1,7 @@
 <ul class='companies-list'>
   {{#each model as |company|}}
     {{items-list-item  class='company' content=company itemRoute='company'}}
+    ({{#link-to 'company.building' company 1 class="building"}}Building 1{{/link-to}})
   {{/each}}
 </ul>
 
