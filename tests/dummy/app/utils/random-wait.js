@@ -1,6 +1,4 @@
-import Ember from 'ember';
-
-const { RSVP } = Ember;
+import RSVP from 'rsvp';
 const { Promise } = RSVP;
 
 export default function(maxWait = 2000, minWait = 0) {

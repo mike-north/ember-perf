@@ -1,8 +1,12 @@
+import Route from '@ember/routing/route';
+import { get } from '@ember/object';
 import Ember from 'ember';
 import randomWait from '../../utils/random-wait';
 import { BUILDINGS } from '../../utils/sample-data';
 
-const { Route, get, testing } = Ember;
+const {
+  testing
+} = Ember;
 
 export default Route.extend({
   model(params) {

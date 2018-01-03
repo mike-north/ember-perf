@@ -1,9 +1,13 @@
+import { A } from '@ember/array';
+import { set } from '@ember/object';
 import Ember from 'ember';
 import BaseRoute from './base';
 import randomWait from '../utils/random-wait';
 import { COMPANIES } from '../utils/sample-data';
 
-const { A, testing, set } = Ember;
+const {
+  testing
+} = Ember;
 
 export default BaseRoute.extend({
   model(params) {

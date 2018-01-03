@@ -7,15 +7,16 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "ember server",
     "build": "ember build",
+    "lint:js": "eslint ./*.js addon addon-test-support app config lib server test-support tests",
+    "start": "ember serve",
     "test": "ember try:each",
     "publish:patch": "npm whoami && npm version patch && git push origin --tags && npm publish",
     "publish:minor": "npm whoami && npm version minor && git push origin --tags && npm publish"
   },
   "repository": "https://github.com/mike-north/ember-perf.git",
   "engines": {
-    "node": ">= 4"
+    "node": "^4.5 || 6.* || >= 7.*"
   },
   "author": "Mike North <michael.l.north@gmail.com> (http://mike.works)",
   "homepage": "https://github.com/mike-north/ember-perf",
@@ -41,9 +42,10 @@
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.1.0",
     "ember-source": "^2.13.2",
-    "eslint-plugin-ember-suave": "^1.0.0",
+    "eslint-plugin-ember": "^5.0.0",
+    "eslint-plugin-node": "^5.2.1",
     "loader.js": "^4.1.0",
-    "rsvp": "^4.6.1"
+    "rsvp": "^4.7.0"
   },
   "keywords": [
     "ember-addon",
