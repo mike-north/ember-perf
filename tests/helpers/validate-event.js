@@ -1,6 +1,4 @@
-import Ember from 'ember';
-
-const { typeOf } = Ember;
+import { typeOf } from '@ember/utils';
 
 export default function(assert, now, data, eventType = 'transition') {
   assert.ok(data.endTime > data.startTime, 'end time is greater than start time');

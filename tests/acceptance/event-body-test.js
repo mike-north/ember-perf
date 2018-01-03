@@ -1,10 +1,8 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import { module, test } from 'qunit';
 import startApp from '../../tests/helpers/start-app';
 import validateEvent from '../../tests/helpers/validate-event';
 import performanceNow from 'ember-perf/utils/performance-now';
-
-const { run } = Ember;
 
 let application;
 

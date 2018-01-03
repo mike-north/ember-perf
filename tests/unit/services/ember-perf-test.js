@@ -1,9 +1,8 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import { moduleFor, test } from 'ember-qunit';
 import validateEvent from '../../helpers/validate-event';
 import performanceNow from 'ember-perf/utils/performance-now';
 
-const { run } = Ember;
 moduleFor('service:ember-perf');
 
 test('measureRender starts a timer and schedules ending a timer in the afterRender queue', function(assert) {

@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import { create as emberCreate } from '@ember/polyfills';
 import performanceNow from '../utils/performance-now';
 import RenderData from './render-data';
 
 // allow compatibility with IE8 via Ember's create polyfill
 // eslint-disable-next-line
-const create = Object.create || Ember.create;
+const create = Object.create || emberCreate;
 
 function TransitionData(args) {
   this._super$constructor(...arguments);

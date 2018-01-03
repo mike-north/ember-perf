@@ -1,16 +1,14 @@
-import Ember from 'ember';
+import Application from '@ember/application';
+import Router from '@ember/routing/router';
+import Route from '@ember/routing/route';
 import EmberPerfService from 'ember-perf/services/ember-perf';
 import RouterExt from 'ember-perf/ext/router';
 import RouteExt from 'ember-perf/ext/route';
 import config from '../config/environment';
 import instanceInitializer from 'ember-perf/instance-initializers/ember-perf';
 
-const {
-  Router, Route
-} = Ember;
-
-if (Ember.Application.instanceInitializer) {
-  Ember.Application.instanceInitializer(instanceInitializer);
+if (Application.instanceInitializer) {
+  Application.instanceInitializer(instanceInitializer);
 }
 
 function injectServiceOntoFactories(emberPerf, application) {
@@ -47,7 +45,7 @@ export function initialize() {
   if (!application.instanceInitializer) {
     instanceInitializer.initialize(container);
   }
-};
+}
 
 export default {
   name: 'ember-perf-setup',

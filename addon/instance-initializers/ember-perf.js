@@ -1,6 +1,4 @@
-import Ember from 'ember';
-
-const { subscribe } = Ember;
+import { subscribe } from '@ember/instrumentation';
 
 // this lives in addon/ because when running on Ember < 1.12
 // the ember-load-initializers project will attempt to call

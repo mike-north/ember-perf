@@ -1,25 +1,20 @@
 /* eslint no-console: 0 */
+import Service from '@ember/service';
+
+import { assert } from '@ember/debug';
+import { classify } from '@ember/string';
+import { oneWay } from '@ember/object/computed';
+import { defer } from 'rsvp';
+import { schedule, scheduleOnce } from '@ember/runloop';
+import EObj, { set, get, getWithDefault } from '@ember/object';
+import Evented, { on } from '@ember/object/evented';
 import Ember from 'ember';
 import TransitionData from '../core/transition-data';
 import RenderData from '../core/render-data';
 
-// jscs:disable disallowDirectPropertyAccess
 const {
-  Evented,
-  assert,
-  String: {
-    classify
-  },
-  computed: {
-    oneWay
-  },
-  RSVP: {
-    defer
-  },
-  run: { scheduleOnce, schedule },
-  getWithDefault, get, set, on
+  Logger
 } = Ember;
-const { Object: EObj, Service, Logger } = Ember;
 const Base = Service || EObj;
 const {
   keys
