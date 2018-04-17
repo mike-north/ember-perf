@@ -59,7 +59,10 @@ export default Base.extend(Evented, {
       return;
     }
     transitionInfo.promise._emberPerfTransitionId = transitionCounter++;
-    let transitionRoute = transitionInfo.promise.targetName || get(transitionInfo.promise, 'intent.name');
+    let transitionRoute = transitionInfo.promise.targetName ||
+      get(transitionInfo.promise, 'intent.name') ||
+      [...get(transitionInfo.promise, 'state.handlerInfos')].slice(-1)[0].name
+
     let transitionCtxt = get(transitionInfo.promise, 'intent.contexts');
     let hasTransitionCtxt = transitionCtxt && transitionCtxt[0];
     let transitionUrl = get(transitionInfo.promise, 'intent.url');
