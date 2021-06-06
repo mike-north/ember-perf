@@ -45,7 +45,7 @@
     "eslint-plugin-ember": "5.0.3",
     "eslint-plugin-node": "8.0.1",
     "loader.js": "4.6.0",
-    "rsvp": "4.7.0"
+    "rsvp": "4.8.5"
   },
   "keywords": [
     "ember-addon",
