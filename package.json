@@ -39,10 +39,10 @@
     "ember-export-application-global": "2.0.1",
     "ember-load-initializers": "2.1.2",
     "ember-resolver": "9.0.1",
-    "ember-source": "4.9.3",
+    "ember-source": "4.10.0",
     "ember-source-channel-url": "1.2.0",
     "ember-try": "1.4.0",
-    "eslint-plugin-ember": "11.3.1",
+    "eslint-plugin-ember": "11.4.2",
     "eslint-plugin-node": "11.1.0",
     "loader.js": "4.7.0",
     "rsvp": "4.8.5"
