@@ -4254,10 +4254,10 @@ ember-cli-htmlbars-inline-precompile@^1.0.0:
     heimdalljs-logger "^0.1.9"
     silent-error "^1.1.0"
 
-ember-cli-htmlbars@6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-6.2.0.tgz#18ec48ee1c93f9eed862a64eb24a9d14604f1dfc"
-  integrity sha512-j5EGixjGau23HrqRiW/JjoAovg5UBHfjbyN7wX5ekE90knIEqUUj1z/Mo/cTx/J2VepQ2lE6HdXW9LWQ/WdMtw==
+ember-cli-htmlbars@6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-htmlbars/-/ember-cli-htmlbars-6.3.0.tgz#ac85f2bbd09788992ab7f9ca832cd044fb8e5798"
+  integrity sha512-N9Y80oZfcfWLsqickMfRd9YByVcTGyhYRnYQ2XVPVrp6jyUyOeRWmEAPh7ERSXpp8Ws4hr/JB9QVQrn/yZa+Ag==
   dependencies:
     "@ember/edition-utils" "^1.2.0"
     babel-plugin-ember-template-compilation "^2.0.0"
@@ -4443,10 +4443,10 @@ ember-cli-version-checker@^5.1.1, ember-cli-version-checker@^5.1.2:
     semver "^7.3.4"
     silent-error "^1.1.1"
 
-ember-cli@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-5.1.0.tgz#3cece7fc6b09fc6d2e0edd1457b733bae2006b81"
-  integrity sha512-TlnfO+V5lZqRQ7eGXt+P8q24Cu90GSXXAS/2NasaCtC1WY7eVzhfMsoNZiOw3Pe1CaB7i5fPDR8jAMsTwx8Tpg==
+ember-cli@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-5.2.0.tgz#38fc06f8efe14b3d92dd790e039e2510a0fcb2cb"
+  integrity sha512-VZ/yhnM9tNWxZQQ+3dGe0MkUhkcS51W7WQWxlIr+NxlqG+WLe6qi8IKHElXwI3nY/Gbh5kSU5rF31WmGeGXjbg==
   dependencies:
     "@babel/core" "^7.21.4"
     "@pnpm/find-workspace-dir" "^6.0.1"
@@ -4483,7 +4483,7 @@ ember-cli@5.1.0:
     execa "^5.1.1"
     exit "^0.1.2"
     express "^4.18.1"
-    filesize "^10.0.5"
+    filesize "^10.0.7"
     find-up "^5.0.0"
     find-yarn-workspace-root "^2.0.0"
     fixturify-project "^2.1.1"
@@ -4520,7 +4520,7 @@ ember-cli@5.1.0:
     remove-types "^1.0.0"
     resolve "^1.22.1"
     resolve-package-path "^4.0.3"
-    safe-stable-stringify "^2.4.2"
+    safe-stable-stringify "^2.4.3"
     sane "^5.0.1"
     semver "^7.3.5"
     silent-error "^1.1.1"
@@ -5369,7 +5369,7 @@ file-uri-to-path@1.0.0:
   resolved "https://registry.yarnpkg.com/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
   integrity sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==
 
-filesize@^10.0.5:
+filesize@^10.0.7:
   version "10.0.12"
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-10.0.12.tgz#6eef217c08e9633cdbf438d9124e8f5f524ffa05"
   integrity sha512-6RS9gDchbn+qWmtV2uSjo5vmKizgfCQeb5jKmqx8HyzA3MoLqqyQxN+QcjkGBJt7FjJ9qFce67Auyya5rRRbpw==
@@ -8903,7 +8903,7 @@ safe-regex@^1.1.0:
   dependencies:
     ret "~0.1.10"
 
-safe-stable-stringify@^2.4.2:
+safe-stable-stringify@^2.4.3:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/safe-stable-stringify/-/safe-stable-stringify-2.4.3.tgz#138c84b6f6edb3db5f8ef3ef7115b8f55ccbf886"
   integrity sha512-e2bDA2WJT0wxseVd4lsDP4+3ONX6HpMXQa1ZhFQ7SU+GjvORCmShbCMltrtIDfkYhVHrOcPtj+KhmDBdPdZD1g==
