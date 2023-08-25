@@ -4443,10 +4443,10 @@ ember-cli-version-checker@^5.1.1, ember-cli-version-checker@^5.1.2:
     semver "^7.3.4"
     silent-error "^1.1.1"
 
-ember-cli@5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-5.2.0.tgz#38fc06f8efe14b3d92dd790e039e2510a0fcb2cb"
-  integrity sha512-VZ/yhnM9tNWxZQQ+3dGe0MkUhkcS51W7WQWxlIr+NxlqG+WLe6qi8IKHElXwI3nY/Gbh5kSU5rF31WmGeGXjbg==
+ember-cli@5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-5.2.1.tgz#2605085254373d50eed51a995c3e57f90517e812"
+  integrity sha512-TYojG0uxyvX0rEgb3GkOVVUPCtfLmQbw2YHnAdZxHTJ1d45oRaDHlJmPfsaY8suVbP4EjXOiPR1CkFKoOvAuXg==
   dependencies:
     "@babel/core" "^7.21.4"
     "@pnpm/find-workspace-dir" "^6.0.1"
@@ -4578,10 +4578,10 @@ ember-qunit@^3.5.0:
     ember-cli-test-loader "^2.2.0"
     qunit "~2.6.0"
 
-ember-resolver@11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/ember-resolver/-/ember-resolver-11.0.0.tgz#a2b6b8459a63d01fca4ff36386a743b630f39d22"
-  integrity sha512-TOc685OnGEMMNEt04BukmQHOYVXnRJc+sGZij/vzWdxXRq+Wpsu1Nw2nLFo6fbMqqVLATk5oLKAQ1eKQwte2wQ==
+ember-resolver@11.0.1:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/ember-resolver/-/ember-resolver-11.0.1.tgz#5914e67aec7053f7148e4b0ae2d6918e830f7909"
+  integrity sha512-ucBk3oM+PR+AfYoSUXeQh8cDQS1sSiEKp4Pcgbew5cFMSqPxJfqd1zyZsfQKNTuyubeGmWxBOyMVSTvX2LeCyg==
   dependencies:
     ember-cli-babel "^7.26.11"
 
