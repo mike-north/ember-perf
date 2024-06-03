@@ -1117,11 +1117,11 @@
     ember-cli-htmlbars-inline-precompile "^1.0.0"
 
 "@embroider/macros@^1.0.0":
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-1.16.1.tgz#925c947ae00d7937d1c6b1ffb0d778924642c67b"
-  integrity sha512-yBavtQBbiCjIW4tTNdoS+5/eu3mckZImrcVFkloRvZ5ZWvs2zqnLJVtfNsPMxhWu6dknFlmLqfuT30+kqnsQbg==
+  version "1.16.2"
+  resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-1.16.2.tgz#6b7a4740adc2d354b5c9dd83232a57ac642f2ae3"
+  integrity sha512-V7/6zkPmoZrPmoHKlmMyNmg8mUMdIOH7z4dqygQwWoMJp6EYd6agSLLXsfEkjBPHwTvNmiUd64Ey4dyBcYWhwQ==
   dependencies:
-    "@embroider/shared-internals" "2.6.0"
+    "@embroider/shared-internals" "2.6.1"
     assert-never "^1.2.1"
     babel-import-util "^2.0.0"
     ember-cli-babel "^7.26.6"
@@ -1130,10 +1130,10 @@
     resolve "^1.20.0"
     semver "^7.3.2"
 
-"@embroider/shared-internals@2.6.0", "@embroider/shared-internals@^2.0.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-2.6.0.tgz#851fd8d051fd4f7f93b2b7130e2ae5cdd537c5d6"
-  integrity sha512-A2BYQkhotdKOXuTaxvo9dqOIMbk+2LqFyqvfaaePkZcFJvtCkvTaD31/sSzqvRF6rdeBHjdMwU9Z2baPZ55fEQ==
+"@embroider/shared-internals@2.6.1", "@embroider/shared-internals@^2.0.0":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-2.6.1.tgz#415fa08258dca7e8396922da680d424a3e2e12f8"
+  integrity sha512-STU1oDP36JQY+zpivyAfXGXadN664d+DOiVNBUW+4AAuWLVxIRWDIuFj8UxzREXZU9trZY8vOhKwKQtfEgdwSg==
   dependencies:
     babel-import-util "^2.0.0"
     debug "^4.3.2"
@@ -1465,10 +1465,10 @@
   resolved "https://registry.yarnpkg.com/@handlebars/parser/-/parser-2.0.0.tgz#5e8b7298f31ff8f7b260e6b7363c7e9ceed7d9c5"
   integrity sha512-EP9uEDZv/L5Qh9IWuMUGJRfwhXJ4h1dqKTT4/3+tY0eu7sPis7xh23j61SYUnNF4vqCQvvUXpDo9Bh/+q1zASA==
 
-"@inquirer/figures@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@inquirer/figures/-/figures-1.0.2.tgz#a6af5e9f9969efb9ed3469130566315c36506b8a"
-  integrity sha512-4F1MBwVr3c/m4bAUef6LgkvBfSjzwH+OfldgHqcuacWwSUetFebM2wi58WfG9uk1rR98U6GwLed4asLJbwdV5w==
+"@inquirer/figures@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@inquirer/figures/-/figures-1.0.3.tgz#1227cc980f88e6d6ab85abadbf164f5038041edd"
+  integrity sha512-ErXXzENMH5pJt5/ssXV0DfWUZqly8nGzf0UcBV9xTnP+KyffE2mqyxIMBrZ8ijQck2nU0TQm40EQB53YreyWHw==
 
 "@jridgewell/gen-mapping@^0.3.2", "@jridgewell/gen-mapping@^0.3.5":
   version "0.3.5"
@@ -1612,9 +1612,9 @@
     "@types/node" "*"
 
 "@types/express-serve-static-core@^4.17.33":
-  version "4.19.1"
-  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.19.1.tgz#57d34698bb580720fd6e3c360d4b2fdef579b979"
-  integrity sha512-ej0phymbFLoCB26dbbq5PGScsf2JAJ4IJHjG10LalgUV36XKTmA4GdA+PVllKvRk0sEKt64X8975qFnkSi0hqA==
+  version "4.19.3"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.19.3.tgz#e469a13e4186c9e1c0418fb17be8bc8ff1b19a7a"
+  integrity sha512-KOzM7MhcBFlmnlr/fzISFF5vGWVSvN6fTd4T+ExOt08bA/dA5kpSzY52nMsI1KDFmUREpJelPYyuslLRSjjgCg==
   dependencies:
     "@types/node" "*"
     "@types/qs" "*"
@@ -1687,9 +1687,9 @@
   integrity sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==
 
 "@types/node@*", "@types/node@>=10.0.0":
-  version "20.12.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.12.12.tgz#7cbecdf902085cec634fdb362172dfe12b8f2050"
-  integrity sha512-eWLDGF/FOSPtAvEqeRAQ4C8LSA7M1I7i0ky1I8U7kD1J5ITyW3AsRhQrKVoWf5pFKZ2kILsEGJhsI9r93PYnOw==
+  version "20.14.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.14.0.tgz#49ceec7b34f8621470cff44677fa9d461a477f17"
+  integrity sha512-5cHBxFGJx6L4s56Bubp4fglrEpmyJypsqI6RgzMfBHWUJQGWAAi8cWcgetEbZXHYXo9C2Fa4EEds/uSyS4cxmA==
   dependencies:
     undici-types "~5.26.4"
 
@@ -3506,9 +3506,9 @@ can-symlink@^1.0.0:
     tmp "0.0.28"
 
 caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30001587:
-  version "1.0.30001623"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001623.tgz#e982099dcb229bb6ab35f5aebe2f8d79ccf6e8a8"
-  integrity sha512-X/XhAVKlpIxWPpgRTnlgZssJrF0m6YtRA0QDWgsBNT12uZM6LPRydR7ip405Y3t1LamD8cP2TZFEDZFBf5ApcA==
+  version "1.0.30001627"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001627.tgz#8071c42d468e06ed2fb2c545efe79a663fd326ab"
+  integrity sha512-4zgNiB8nTyV/tHhwZrFs88ryjls/lHiqFhrxCW4qSTeuRByBVnPYpDInchOIySWknznucaf31Z4KYqjfbrecVw==
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -4019,9 +4019,9 @@ debug@^3.1.0, debug@^3.2.7:
     ms "^2.1.1"
 
 debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@~4.3.1, debug@~4.3.2, debug@~4.3.4:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
-  integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.5.tgz#e83444eceb9fedd4a1da56d671ae2446a01a6e1e"
+  integrity sha512-pt0bNEmneDIvdL1Xsd9oDQ/wrQRkXDT4AUWlNZNPKvW5x/jyO9VFXkJUP07vQ2upmw5PlaITaPKc31jK13V+jg==
   dependencies:
     ms "2.1.2"
 
@@ -4199,9 +4199,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.3.47, electron-to-chromium@^1.4.668:
-  version "1.4.783"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.783.tgz#933887165b8b6025a81663d2d97cf4b85cde27b2"
-  integrity sha512-bT0jEz/Xz1fahQpbZ1D7LgmPYZ3iHVY39NcWWro1+hA2IvjiPeaXtfSqrQ+nXjApMvQRE2ASt1itSLRrebHMRQ==
+  version "1.4.788"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.788.tgz#a3545959d5cfa0a266d3e551386c040be34e7e06"
+  integrity sha512-ubp5+Ev/VV8KuRoWnfP2QF2Bg+O2ZFdb49DiiNbz2VmgkIqrnyYaqIOqj8A6K/3p1xV0QcU5hBQ1+BmB6ot1OA==
 
 ember-assign-polyfill@~2.4.0:
   version "2.4.0"
@@ -4212,9 +4212,9 @@ ember-assign-polyfill@~2.4.0:
     ember-cli-version-checker "^2.0.0"
 
 ember-auto-import@^2.6.3:
-  version "2.7.2"
-  resolved "https://registry.yarnpkg.com/ember-auto-import/-/ember-auto-import-2.7.2.tgz#5e74b6a8839fab25e23af6cff6f74b1b424d8f25"
-  integrity sha512-pkWIljmJClYL17YBk8FjO7NrZPQoY9v0b+FooJvaHf/xlDQIBYVP7OaDHbNuNbpj7+wAwSDAnnwxjCoLsmm4cw==
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/ember-auto-import/-/ember-auto-import-2.7.3.tgz#08421f35cd9628327e1dd5d9df40673a1d7beb71"
+  integrity sha512-EQzStGYxNvTPYWCFh0X57HFAzAvA2rHHRgBeWNDKHQ/rENNlHw0c0e0i1XebwEfv+yGHOodE4dN+f/mrYkQXLw==
   dependencies:
     "@babel/core" "^7.16.7"
     "@babel/plugin-proposal-class-properties" "^7.16.7"
@@ -6583,11 +6583,11 @@ inquirer@^6, inquirer@^6.2.2:
     through "^2.3.6"
 
 inquirer@^9.1.5:
-  version "9.2.22"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-9.2.22.tgz#718cb4153f0d35176aab27d495f8e358d1e2008f"
-  integrity sha512-SqLLa/Oe5rZUagTR9z+Zd6izyatHglbmbvVofo1KzuVB54YHleWzeHNLoR7FOICGOeQSqeLh1cordb3MzhGcEw==
+  version "9.2.23"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-9.2.23.tgz#cd2fe34edca12315b624fbc3c8cb99b1c4f61f90"
+  integrity sha512-kod5s+FBPIDM2xiy9fu+6wdU/SkK5le5GS9lh4FEBjBHqiMgD9lLFbCbuqFNAjNL2ZOy9Wd9F694IOzN9pZHBA==
   dependencies:
-    "@inquirer/figures" "^1.0.2"
+    "@inquirer/figures" "^1.0.3"
     "@ljharb/through" "^2.3.13"
     ansi-escapes "^4.3.2"
     chalk "^5.3.0"
@@ -9752,9 +9752,9 @@ terser@^4.3.9:
     source-map-support "~0.5.12"
 
 testem@^3.10.1:
-  version "3.13.0"
-  resolved "https://registry.yarnpkg.com/testem/-/testem-3.13.0.tgz#27d6b2c50e9607f2c2d4ea5f75c88b3434dac7a0"
-  integrity sha512-b4hdlkH2TR1TQJCOgBNbD7nz4TjeYF35MgUlzum3yfDaaR+lJDjmJNMgi72MKgg+SjkGZ1U3BCBOqLC85MsMmQ==
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/testem/-/testem-3.14.0.tgz#ba563f5940d4c4c37e0b3db6d56b001b9aed80d4"
+  integrity sha512-hpybTZhio6DXUM7s0HsE8EOnN8zuA6LdNcz3EsTpQSnD56Cj6gSuFQx82wDKZQ6OmM1kvIBebxP+rEoOYBgCOA==
   dependencies:
     "@xmldom/xmldom" "^0.8.0"
     backbone "^1.1.2"
