@@ -4721,10 +4721,10 @@ ember-export-application-global@2.0.1:
   resolved "https://registry.yarnpkg.com/ember-export-application-global/-/ember-export-application-global-2.0.1.tgz#b120a70e322ab208defc9e2daebe8d0dfc2dcd46"
   integrity sha512-B7wiurPgsxsSGzJuPFkpBWnaeuCu2PGpG2BjyrfA1VcL7//o+5RSnZqiCEY326y7qmxb2GoCgo0ft03KBU0rRw==
 
-ember-load-initializers@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/ember-load-initializers/-/ember-load-initializers-3.0.0.tgz#c0a5907249a962a7b35bfe11bc7d13c981f7cc8b"
-  integrity sha512-nl2oehIBoh0FjjyFdzhF7UGX8NZHxXe3CLpyS2Iw+20Ni3nBedFiyUWYRbCp3waPks/rLKgYPcJP78P5N6BI0Q==
+ember-load-initializers@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/ember-load-initializers/-/ember-load-initializers-3.0.1.tgz#507733164dd28b9216c83a8f78bbb94142d5d87f"
+  integrity sha512-qV3vxJKw5+7TVDdtdLPy8PhVsh58MlK8jwzqh5xeOwJPNP7o0+BlhvwoIlLYTPzGaHdfjEIFCgVSyMRGd74E1g==
 
 ember-qunit@^3.5.0:
   version "3.5.3"
