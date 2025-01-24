@@ -10,6 +10,12 @@ const {
 } = Ember;
 
 export default Route.extend({
+  queryParams: {
+    uselessQP: {
+      refreshModel: true
+    }
+  },
+
   model() {
     let buildingIds = get(this.modelFor('company'), 'buildings');
     return randomWait(testing ? 4 : 2400, testing ? 2 : 300).then(() => {
