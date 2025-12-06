@@ -3919,13 +3919,13 @@ ember-cli-babel@^8.0.0, ember-cli-babel@^8.2.0:
     resolve-package-path "^4.0.3"
     semver "^7.3.8"
 
-ember-cli-dependency-checker@3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/ember-cli-dependency-checker/-/ember-cli-dependency-checker-3.3.2.tgz#94ed7e8e3d47e494082eb9ccfaa489d603ab6017"
-  integrity sha512-PwkrW5oYsdPWwt+0Tojufmv/hxVETTjkrEdK7ANQB2VSnqpA5UcYubwpQM9ONuR2J8wyNDMwEHlqIrk/FYtBsQ==
+ember-cli-dependency-checker@3.3.3:
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/ember-cli-dependency-checker/-/ember-cli-dependency-checker-3.3.3.tgz#a920d3d39c4edb3c4c0a25158142a6e89b2b07ad"
+  integrity sha512-mvp+HrE0M5Zhc2oW8cqs8wdhtqq0CfQXAYzaIstOzHJJn/U01NZEGu3hz7J7zl/+jxZkyygylzcS57QqmPXMuQ==
   dependencies:
     chalk "^2.4.2"
-    find-yarn-workspace-root "^1.2.1"
+    find-yarn-workspace-root "^2.0.0"
     is-git-url "^1.0.0"
     resolve "^1.22.0"
     semver "^5.7.1"
@@ -4113,10 +4113,10 @@ ember-cli-version-checker@^5.1.2:
     semver "^7.3.4"
     silent-error "^1.1.1"
 
-ember-cli@6.8.0:
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-6.8.0.tgz#280a80a130cde74a49d1eae23bdf70e28627f896"
-  integrity sha512-qUMfPDvyMUWjK+na34YHv/8AQGn5WJTcCL5qaMwa5MLi2hnKBzvCBwd99nORJdLG9GpCxYzxFQ+txyEkfmvk7g==
+ember-cli@6.8.1:
+  version "6.8.1"
+  resolved "https://registry.yarnpkg.com/ember-cli/-/ember-cli-6.8.1.tgz#fac0cc96128ea2892161b4eb3f6d8e93b084f317"
+  integrity sha512-lA/eW8ESZyYIuyyIkicxkEfsV3pZzDLaJJsEEAV09Bfw9x9yPxPn/6yJcX5xTmj+cYWfkeQlOWj4ZKvXNIzwiA==
   dependencies:
     "@ember-tooling/blueprint-blueprint" "^0.2.1"
     "@ember-tooling/blueprint-model" "^0.4.1"
@@ -5016,14 +5016,6 @@ find-up@^5.0.0:
   dependencies:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
-
-find-yarn-workspace-root@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/find-yarn-workspace-root/-/find-yarn-workspace-root-1.2.1.tgz#40eb8e6e7c2502ddfaa2577c176f221422f860db"
-  integrity sha512-dVtfb0WuQG+8Ag2uWkbG79hOUzEsRrhBzgfn86g2sJPkzmcpGdghbNTfUKGTxymFrY/tLIodDzLoW9nOJ4FY8Q==
-  dependencies:
-    fs-extra "^4.0.3"
-    micromatch "^3.1.4"
 
 find-yarn-workspace-root@^2.0.0:
   version "2.0.0"
