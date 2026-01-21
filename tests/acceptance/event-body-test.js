@@ -136,6 +136,44 @@ test('Initial load, then drilling in, then pivoting', function(assert) {
   });
 });
 
+test('Nested resource with the same name ', function(assert) {
+  // This test covers the bug here: https://github.com/mike-north/ember-perf/issues/83
+
+  let datas = [];
+  let testStartTime = performanceNow();
+
+  application.perfService.on('transitionComplete', (data) => {
+    datas.push(data);
+  });
+
+  visit('/articles/1');
+
+  andThen(function() {
+    assert.ok(datas, 'Data is present');
+    let [data] = datas;
+    validateEvent(assert, testStartTime, data);
+    assert.equal(datas.length, 1, 'Only one event fired');
+  });
+
+  click('a[href=\'/articles/2\']');
+
+  andThen(function() {
+    assert.equal(datas.length, 2, 'Only two events fired');
+    let data = datas[datas.length - 1];
+    assert.equal(data.destURL, '/articles/2', 'Intent URL is correct');
+    assert.equal(data.destRoute, 'articles.article', 'Intent route is correct');
+  });
+
+  click('a[href=\'/articles/3\']');
+
+  andThen(function() {
+    assert.equal(datas.length, 3, 'Only three events fired');
+    let data = datas[datas.length - 1];
+    assert.equal(data.destURL, '/articles/3', 'Intent URL is correct');
+    assert.equal(data.destRoute, 'articles.article', 'Intent route is correct');
+  });
+});
+
 test('Initial measureRender', function(assert) {
   let datas = [];
   let testStartTime = performanceNow();

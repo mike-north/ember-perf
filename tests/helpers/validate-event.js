@@ -12,7 +12,17 @@ export default function(assert, now, data, eventType = 'transition') {
 
   if (eventType === 'transition') {
     assert.equal(typeOf(data.routes), 'array', 'data.routes is an array');
-    assert.deepEqual(data.routes.map((r) => r.name), ['application', 'loading', 'company', 'company.loading', 'company.buildings'], 'Proper routes load');
+
+
+    let rs = data.routes.map((r) => r.name)
+
+    if (rs.includes('articles')) {
+      assert.deepEqual(rs, ['application', 'articles', 'articles.article'], 'Proper routes load for articles resource');
+
+    } else {
+      assert.deepEqual(rs, ['application', 'loading', 'company', 'company.loading', 'company.buildings'], 'Proper routes load for companies/buildings resource');
+    }
+
     assert.equal(data.routes
       .map((r) => r.startTime)
       .filter((x) => typeOf(x) !== 'number'), 0, 'All route startTimes are numbers');
