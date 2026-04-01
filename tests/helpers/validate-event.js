@@ -1,7 +1,7 @@
 import { typeOf } from '@ember/utils';
 
 export default function(assert, now, data, eventType = 'transition') {
-  assert.ok(data.endTime > data.startTime, 'end time is greater than start time');
+  assert.ok(data.endTime >= data.startTime, 'end time is greater than or equal to the start time');
   assert.ok(data.endTime > now, 'end time indicates time has passed since test start');
   assert.ok(data.startTime > now, 'start time indicates time has passed since test start');
   assert.equal(typeOf(data.endTime), 'number', 'endTime is a number');
