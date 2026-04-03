@@ -43,7 +43,7 @@
     "ember-source-channel-url": "1.2.0",
     "ember-try": "1.4.0",
     "eslint-plugin-ember": "12.7.5",
-    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-n": "14.0.0",
     "loader.js": "4.7.0",
     "rsvp": "4.8.5"
   },
